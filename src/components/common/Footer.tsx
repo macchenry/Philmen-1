@@ -303,6 +303,12 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
               Contact
             </button>
             <button
+              onClick={() => onNavigate('sitemap')}
+              className="hover:text-white transition-colors"
+            >
+              Sitemap
+            </button>
+            <button
               onClick={onOpenAdminAuth}
               className="hover:text-amber-400 transition-colors inline-flex items-center gap-1 text-slate-400"
             >

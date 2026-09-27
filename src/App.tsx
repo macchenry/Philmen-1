@@ -11,6 +11,7 @@ import { SearchPage } from './pages/SearchPage';
 import { HowItWorksPage } from './pages/HowItWorksPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
+import { SitemapPage } from './pages/SitemapPage';
 import { DashboardLayout } from './components/dashboard/DashboardLayout';
 import { ManagerOwnerDashboard } from './pages/dashboard/ManagerOwnerDashboard';
 import { TechAdminDashboard } from './pages/dashboard/TechAdminDashboard';
@@ -274,6 +275,16 @@ function MainApp() {
 
         {currentRoute === 'contact' && (
           <ContactPage />
+        )}
+
+        {currentRoute === 'sitemap' && (
+          <SitemapPage
+            onNavigate={navigateTo}
+            onSelectListing={(slug) => {
+              const item = listings.find(l => l.slug === slug);
+              if (item) handleSelectListing(item);
+            }}
+          />
         )}
       </main>
 
