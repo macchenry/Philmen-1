@@ -233,25 +233,25 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
   };
 
   return (
-    <div className="bg-slate-900/90 backdrop-blur-xl rounded-3xl border border-slate-700/70 shadow-2xl overflow-hidden text-white">
+    <div className="bg-slate-900/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-slate-700/70 shadow-2xl overflow-hidden text-white w-full">
       
-      {/* Tab Selector Bar */}
-      <div className="p-3 sm:p-4 bg-slate-950/70 border-b border-slate-800">
-        <div className="flex items-center gap-2 overflow-x-auto scrollbar-none pb-1 sm:pb-0">
+      {/* Tab Selector Bar with touch smooth scroll */}
+      <div className="p-2.5 sm:p-4 bg-slate-950/70 border-b border-slate-800">
+        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pb-1 sm:pb-0 touch-pan-x">
           
-          {/* TAB 1: CAR RENTALS (PREDOMINANT / PRIMARY) */}
+          {/* TAB 1: CAR RENTALS */}
           <button
             type="button"
             onClick={() => setActiveTab('car-rentals')}
-            className={`px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2.5 shrink-0 cursor-pointer ${
+            className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
               activeTab === 'car-rentals'
                 ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 ring-1 ring-amber-400'
                 : 'bg-amber-500/15 text-amber-300 hover:bg-amber-500/25 border border-amber-500/30'
             }`}
           >
-            <Car className="w-4 h-4" />
+            <Car className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span className="tracking-wide">Car Rentals</span>
-            <span className={`text-[10px] px-1.5 py-0.2 rounded-sm font-extrabold uppercase ${
+            <span className={`text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-sm font-extrabold uppercase ${
               activeTab === 'car-rentals' ? 'bg-slate-950 text-amber-400' : 'bg-amber-400 text-slate-950'
             }`}>
               Primary Fleet
@@ -262,7 +262,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
           <button
             type="button"
             onClick={() => setActiveTab('heavy-equipment')}
-            className={`px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 sm:gap-2 shrink-0 cursor-pointer ${
               activeTab === 'heavy-equipment'
                 ? 'bg-white text-slate-950 font-bold shadow-md'
                 : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60'
@@ -276,7 +276,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
           <button
             type="button"
             onClick={() => setActiveTab('home-rentals')}
-            className={`px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 sm:gap-2 shrink-0 cursor-pointer ${
               activeTab === 'home-rentals'
                 ? 'bg-white text-slate-950 font-bold shadow-md'
                 : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60'
@@ -290,7 +290,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
           <button
             type="button"
             onClick={() => setActiveTab('towing')}
-            className={`px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 sm:gap-2 shrink-0 cursor-pointer ${
               activeTab === 'towing'
                 ? 'bg-white text-slate-950 font-bold shadow-md'
                 : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60'
@@ -304,7 +304,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
           <button
             type="button"
             onClick={() => setActiveTab('suits')}
-            className={`px-3.5 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
+            className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 sm:gap-2 shrink-0 cursor-pointer ${
               activeTab === 'suits'
                 ? 'bg-white text-slate-950 font-bold shadow-md'
                 : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60'
@@ -321,18 +321,18 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-slate-800">
         
         {/* Left Form Area */}
-        <div className="lg:col-span-7 p-5 sm:p-7">
+        <div className="lg:col-span-7 p-4 sm:p-7">
           {isSubmitted ? (
-            <div className="py-8 text-center space-y-4 animate-in fade-in duration-300">
-              <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/40">
-                <CheckCircle2 className="w-8 h-8" />
+            <div className="py-6 sm:py-8 text-center space-y-4 animate-in fade-in duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/40">
+                <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8" />
               </div>
 
               <div className="space-y-1">
-                <span className="text-xs font-bold text-emerald-400 uppercase tracking-wider">
+                <span className="text-[10px] sm:text-xs font-bold text-emerald-400 uppercase tracking-wider">
                   Reservation Dispatched
                 </span>
-                <h4 className="text-xl font-bold text-white font-display">
+                <h4 className="text-lg sm:text-xl font-bold text-white font-display">
                   Philmen Received Your Booking
                 </h4>
                 <p className="text-xs text-slate-300 max-w-sm mx-auto">
@@ -342,9 +342,9 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
 
               <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 text-xs text-slate-300 max-w-sm mx-auto text-left space-y-1">
                 <div className="text-slate-400 font-medium">Selected Service:</div>
-                <div className="font-bold text-white">{submittedSummary}</div>
+                <div className="font-bold text-white truncate">{submittedSummary}</div>
                 <div className="text-[11px] text-slate-400 pt-1">
-                  Sent to: <span className="text-amber-300 font-mono">{contactSettings.notificationEmail}</span>
+                  Sent to: <span className="text-amber-300 font-mono break-all">{contactSettings.notificationEmail}</span>
                 </div>
               </div>
 
@@ -358,7 +358,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                   className="py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold inline-flex items-center justify-center gap-2 transition-colors"
                 >
                   <MessageSquare className="w-4 h-4" />
-                  <span>WhatsApp Desk ({contactSettings.publicWhatsApp})</span>
+                  <span>WhatsApp Desk</span>
                 </a>
 
                 <button
@@ -377,7 +377,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
               {activeTab === 'car-rentals' && (
                 <div className="space-y-3 animate-in fade-in duration-200">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Select Vehicle Model
                       </label>
@@ -395,7 +395,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       </select>
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Chauffeur / Driver Preference
                       </label>
@@ -404,16 +404,16 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                         onChange={e => setCarRentalType(e.target.value)}
                         className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
                       >
-                        <option value="Chauffeur-Driven (Professional Driver)">Chauffeur-Driven (Vetted Professional Driver)</option>
-                        <option value="Self-Drive (Security Terms Apply)">Self-Drive (Security Verification Required)</option>
-                        <option value="Airport VIP Protocol Transfer">Airport VIP Pickup & Protocol Transfer</option>
+                        <option value="Chauffeur-Driven (Professional Driver)">Chauffeur-Driven (Professional Driver)</option>
+                        <option value="Self-Drive (Security Terms Apply)">Self-Drive (Verification Required)</option>
+                        <option value="Airport VIP Protocol Transfer">Airport VIP Pickup & Protocol</option>
                         <option value="Corporate Monthly Lease">Corporate Long-Term Lease</option>
                       </select>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Pickup Location
                       </label>
@@ -429,7 +429,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       </div>
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Pickup Date / Time
                       </label>
@@ -442,7 +442,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       />
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Return Date / Duration
                       </label>
@@ -461,7 +461,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
               {activeTab === 'heavy-equipment' && (
                 <div className="space-y-3 animate-in fade-in duration-200">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Machinery Type
                       </label>
@@ -478,7 +478,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       </select>
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Site Location
                       </label>
@@ -493,7 +493,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Operator
                       </label>
@@ -507,7 +507,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       </select>
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Project Start Date
                       </label>
@@ -526,7 +526,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
               {activeTab === 'home-rentals' && (
                 <div className="space-y-3 animate-in fade-in duration-200">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Property Type
                       </label>
@@ -542,7 +542,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       </select>
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Target Area
                       </label>
@@ -557,7 +557,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Target Move-in Date
                       </label>
@@ -570,7 +570,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       />
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Lease Term
                       </label>
@@ -591,7 +591,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
               {activeTab === 'towing' && (
                 <div className="space-y-3 animate-in fade-in duration-200">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Towing Service
                       </label>
@@ -606,7 +606,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       </select>
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Vehicle Make & Model
                       </label>
@@ -621,9 +621,9 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Current Breakdown Location
+                        Breakdown Location <span className="text-amber-400">*</span>
                       </label>
                       <input
                         type="text"
@@ -635,7 +635,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       />
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Destination Garage / Home
                       </label>
@@ -654,7 +654,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
               {activeTab === 'suits' && (
                 <div className="space-y-3 animate-in fade-in duration-200">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Suit Style
                       </label>
@@ -669,17 +669,17 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                       </select>
                     </div>
 
-                    <div>
+                    <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                         Fitting Location
                       </label>
                       <select
                         value={fittingType}
                         onChange={e => setFittingType(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
+                        className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
                       >
-                        <option value="Executive Office / Home Measurement Visit">Executive Office / Home Measurement Visit</option>
-                        <option value="Philmen Partner Tailoring Studio">Philmen Partner Tailoring Studio</option>
+                        <option value="Executive Office / Home Measurement Visit">Executive Office / Home Measurement</option>
+                        <option value="Philmen Partner Tailoring Studio">Philmen Tailoring Studio</option>
                       </select>
                     </div>
                   </div>
@@ -701,7 +701,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
 
               {/* Universal Customer Contact Row */}
               <div className="pt-3 border-t border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-3">
-                <div>
+                <div className="min-w-0">
                   <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                     Your Full Name <span className="text-amber-400">*</span>
                   </label>
@@ -718,7 +718,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                   </div>
                 </div>
 
-                <div>
+                <div className="min-w-0">
                   <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                     Phone Number <span className="text-amber-400">*</span>
                   </label>
@@ -735,7 +735,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                   </div>
                 </div>
 
-                <div>
+                <div className="min-w-0">
                   <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
                     Contact Method
                   </label>
@@ -753,14 +753,14 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
 
               {/* Submit & Guarantee */}
               <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="text-[11px] text-slate-400 flex items-center gap-1.5">
+                <div className="text-[11px] text-slate-400 flex items-center gap-1.5 text-center sm:text-left">
                   <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
                   <span>Facilitated directly by Philmen desk. No account needed.</span>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full sm:w-auto px-7 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-extrabold tracking-wide uppercase shadow-lg shadow-amber-500/20 transition-all inline-flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
+                  className="w-full sm:w-auto px-6 sm:px-7 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-extrabold tracking-wide uppercase shadow-lg shadow-amber-500/20 transition-all inline-flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>
@@ -774,7 +774,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
         </div>
 
         {/* Right Showcase Card (Dynamic per Active Service Tab) */}
-        <div className="lg:col-span-5 bg-slate-950/60 p-5 sm:p-6 flex flex-col justify-between space-y-4">
+        <div className="lg:col-span-5 bg-slate-950/60 p-4 sm:p-6 flex flex-col justify-between space-y-4">
           
           <div className="space-y-3">
             {/* Visual Thumbnail Frame */}
@@ -796,10 +796,10 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                 </span>
               </div>
 
-              <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-end justify-between">
-                <div>
-                  <div className="text-[11px] text-slate-300 font-medium">Starting Rate:</div>
-                  <div className="text-base font-extrabold text-white tabular-nums">
+              <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-end justify-between gap-2">
+                <div className="min-w-0">
+                  <div className="text-[10px] sm:text-[11px] text-slate-300 font-medium">Starting Rate:</div>
+                  <div className="text-sm sm:text-base font-extrabold text-white tabular-nums truncate">
                     {currentPreview.priceDisplay}
                   </div>
                 </div>
@@ -807,9 +807,9 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                 <button
                   type="button"
                   onClick={() => onNavigate(`category:${currentPreview.categorySlug}`)}
-                  className="px-2.5 py-1 bg-white/90 hover:bg-white text-slate-950 text-[11px] font-bold rounded-lg shadow-sm inline-flex items-center gap-1 transition-colors"
+                  className="px-2.5 py-1 bg-white/90 hover:bg-white text-slate-950 text-[10px] sm:text-[11px] font-bold rounded-lg shadow-sm inline-flex items-center gap-1 transition-colors shrink-0"
                 >
-                  <span>Explore Catalog</span>
+                  <span>Explore</span>
                   <ArrowRight className="w-3 h-3" />
                 </button>
               </div>
@@ -822,7 +822,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
               </h4>
               <div className="flex items-center gap-1 text-[11px] text-slate-400 mt-0.5">
                 <MapPin className="w-3 h-3 text-amber-400 shrink-0" />
-                <span>{currentPreview.location}</span>
+                <span className="truncate">{currentPreview.location}</span>
               </div>
             </div>
 
@@ -833,7 +833,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] text-slate-300">
                 {currentPreview.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-center gap-1.5">
+                  <div key={idx} className="flex items-center gap-1.5 min-w-0">
                     <Check className="w-3 h-3 text-emerald-400 shrink-0" />
                     <span className="truncate">{feat}</span>
                   </div>
@@ -843,7 +843,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
           </div>
 
           {/* Quick Direct Desk Connect */}
-          <div className="pt-3 border-t border-slate-800/80 flex items-center justify-between gap-2 text-xs">
+          <div className="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs">
             <div className="text-slate-400 text-[11px]">
               Need immediate assistance?
             </div>

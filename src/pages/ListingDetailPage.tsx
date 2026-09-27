@@ -55,10 +55,10 @@ export const ListingDetailPage: React.FC<Props> = ({
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8 sm:space-y-12 overflow-x-hidden">
       
       {/* Breadcrumb Navigation */}
-      <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500">
+      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-xs text-slate-500">
         <button
           onClick={onBack}
           className="hover:text-slate-900 font-medium inline-flex items-center gap-1 cursor-pointer"
@@ -69,22 +69,22 @@ export const ListingDetailPage: React.FC<Props> = ({
         <span>/</span>
         <button
           onClick={() => onNavigateCategory(listing.category)}
-          className="hover:text-amber-600 font-medium cursor-pointer"
+          className="hover:text-amber-600 font-medium cursor-pointer truncate max-w-[150px]"
         >
           {listing.category}
         </button>
         {listing.subcategory && (
           <>
             <span>/</span>
-            <span className="text-slate-600">{listing.subcategory}</span>
+            <span className="text-slate-600 truncate max-w-[120px]">{listing.subcategory}</span>
           </>
         )}
         <span>/</span>
-        <span className="font-semibold text-slate-900 truncate max-w-[240px]">{listing.title}</span>
+        <span className="font-semibold text-slate-900 truncate max-w-[180px] sm:max-w-[240px]">{listing.title}</span>
       </div>
 
       {/* Main PDP Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
         
         {/* Left Column: Image Gallery (7 cols) */}
         <div className="lg:col-span-7 space-y-4">
@@ -229,22 +229,22 @@ export const ListingDetailPage: React.FC<Props> = ({
             </button>
 
             {/* 2-Col Quick Contact Grid */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 min-[380px]:grid-cols-2 gap-2.5 sm:gap-3">
               {/* Call Philmen Button */}
               <button
                 onClick={() => onCall(listing)}
-                className="py-3 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
+                className="py-3 px-3 sm:px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-1.5 sm:gap-2 shadow-sm transition-colors cursor-pointer"
               >
-                <Phone className="w-4 h-4 text-amber-400" />
+                <Phone className="w-4 h-4 text-amber-400 shrink-0" />
                 <span>Call {contactSettings.publicPhone}</span>
               </button>
 
               {/* WhatsApp Philmen Button */}
               <button
                 onClick={() => onWhatsApp(listing)}
-                className="py-3 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-sm transition-colors cursor-pointer"
+                className="py-3 px-3 sm:px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center justify-center gap-1.5 sm:gap-2 shadow-sm transition-colors cursor-pointer"
               >
-                <MessageSquare className="w-4 h-4" />
+                <MessageSquare className="w-4 h-4 shrink-0" />
                 <span>WhatsApp Philmen</span>
               </button>
             </div>

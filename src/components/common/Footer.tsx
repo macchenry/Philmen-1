@@ -28,48 +28,48 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
   const { contactSettings } = useApp();
 
   return (
-    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800">
+    <footer className="bg-slate-950 text-slate-300 border-t border-slate-800 overflow-x-hidden">
       
       {/* Top Banner / Trust Bar */}
-      <div className="border-b border-slate-900 bg-slate-900/60 py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div className="border-b border-slate-900 bg-slate-900/60 py-4 sm:py-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 text-xs">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
               <ShieldCheck className="w-4 h-4" />
             </div>
-            <span>
+            <span className="leading-snug">
               <strong className="text-white">Centralized Platform:</strong> All product and service inquiries are managed directly by Philmen management.
             </span>
           </div>
 
-          <div className="flex items-center gap-6 text-slate-400">
+          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-slate-400 text-[11px] sm:text-xs">
             <div className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-amber-500" />
+              <Clock className="w-3.5 h-3.5 text-amber-500 shrink-0" />
               <span>Hours: <strong className="text-slate-200">{contactSettings.businessHours}</strong></span>
             </div>
             <div className="flex items-center gap-1.5">
-              <Globe className="w-3.5 h-3.5 text-amber-500" />
-              <span>{contactSettings.website}</span>
+              <Globe className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+              <span className="truncate">{contactSettings.website}</span>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Footer Directory */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 space-y-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-10 sm:space-y-12">
         
         {/* Primary Nav Menu Items Grid */}
-        <div className="p-6 sm:p-8 bg-slate-900/70 border border-slate-800/90 rounded-3xl">
+        <div className="p-4 sm:p-8 bg-slate-900/70 border border-slate-800/90 rounded-2xl sm:rounded-3xl">
           <div className="text-xs font-bold text-amber-400 uppercase tracking-wider mb-4 font-display">
             Philmen Main Navigation
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3 sm:gap-4">
             
             {/* 1. Categories */}
             <button
               onClick={() => onNavigate('categories')}
-              className="p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer"
+              className="p-3.5 sm:p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer"
             >
               <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
                 <Layers className="w-4 h-4" />
@@ -85,7 +85,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
             {/* 2. Featured */}
             <button
               onClick={() => onNavigate('featured')}
-              className="p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer"
+              className="p-3.5 sm:p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer"
             >
               <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
                 <Star className="w-4 h-4" />
@@ -101,7 +101,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
             {/* 3. How It Works */}
             <button
               onClick={() => onNavigate('how-it-works')}
-              className="p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer"
+              className="p-3.5 sm:p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer"
             >
               <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
                 <HelpCircle className="w-4 h-4" />
@@ -117,7 +117,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
             {/* 4. About Philmen */}
             <button
               onClick={() => onNavigate('about')}
-              className="p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer"
+              className="p-3.5 sm:p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer"
             >
               <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
                 <Info className="w-4 h-4" />
@@ -133,7 +133,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
             {/* 5. Contact */}
             <button
               onClick={() => onNavigate('contact')}
-              className="p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer col-span-2 sm:col-span-1"
+              className="p-3.5 sm:p-4 bg-slate-950/80 hover:bg-slate-950 border border-slate-800/80 hover:border-amber-500/60 rounded-2xl text-left transition-all group cursor-pointer min-[420px]:col-span-2 md:col-span-1"
             >
               <div className="w-8 h-8 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center mb-2.5 group-hover:scale-110 transition-transform">
                 <Headphones className="w-4 h-4" />
@@ -150,7 +150,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
         </div>
 
         {/* Detailed Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
           
           {/* Col 1: Brand & Philosophy */}
           <div className="lg:col-span-2 space-y-4">
@@ -159,14 +159,14 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
                 src="https://i.ibb.co/sJcgCgS7/Philmen.png"
                 alt="Philmen"
                 referrerPolicy="no-referrer"
-                className="h-12 w-auto object-contain brightness-110"
+                className="h-10 sm:h-12 w-auto object-contain brightness-110"
               />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
               Philmen is a centralized platform for displaying and promoting vetted products and services across Ghana. We connect prospective customers directly to verified high-value products, equipment, automotive solutions, real estate, and professional services.
             </p>
             <div className="pt-2">
-              <div className="text-[11px] uppercase tracking-wider font-semibold text-amber-500 mb-2">
+              <div className="text-[11px] uppercase tracking-wider font-semibold text-amber-500 mb-1.5">
                 Facilitation Assurance
               </div>
               <p className="text-xs text-slate-400 leading-relaxed">
@@ -177,10 +177,10 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
 
           {/* Col 2: Categories (Part 1) */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4 font-display">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3.5 font-display">
               Categories Directory
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
+            <ul className="space-y-2 text-xs text-slate-400">
               {CATEGORIES.slice(0, 7).map(cat => (
                 <li key={cat.id}>
                   <button
@@ -196,10 +196,10 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
 
           {/* Col 3: Categories (Part 2) */}
           <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-4 font-display">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3.5 font-display">
               More Offerings
             </h4>
-            <ul className="space-y-2.5 text-xs text-slate-400">
+            <ul className="space-y-2 text-xs text-slate-400">
               {CATEGORIES.slice(7).map(cat => (
                 <li key={cat.id}>
                   <button
@@ -266,12 +266,12 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+        <div className="pt-8 border-t border-slate-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400 text-center sm:text-left">
           <div>
             © {new Date().getFullYear()} Philmen ({contactSettings.website}). All rights reserved.
           </div>
 
-          <div className="flex flex-wrap items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             <button
               onClick={() => onNavigate('categories')}
               className="hover:text-white transition-colors"

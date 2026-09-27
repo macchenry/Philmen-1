@@ -87,14 +87,14 @@ export const SearchPage: React.FC<Props> = ({
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6 sm:space-y-8 overflow-x-hidden">
       
       {/* Header */}
-      <div className="space-y-2">
+      <div className="space-y-1.5 sm:space-y-2">
         <span className="text-xs font-bold text-amber-600 uppercase tracking-wider">
           Search Catalog
         </span>
-        <h1 className="text-3xl font-extrabold text-slate-900 font-display">
+        <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 font-display">
           Find Products & Services
         </h1>
         <p className="text-xs sm:text-sm text-slate-600">
@@ -103,7 +103,7 @@ export const SearchPage: React.FC<Props> = ({
       </div>
 
       {/* Search & Filter Bar */}
-      <div className="bg-white rounded-2xl border border-slate-200 p-5 shadow-xs space-y-4">
+      <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-xs space-y-4">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
           
           {/* Main Keyword Input */}
