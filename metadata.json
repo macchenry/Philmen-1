@@ -1,0 +1,6 @@
+{
+  "name": "Philmen - Centralized Products & Services Platform",
+  "description": "Philmen (www.philmen.shop) is a centralized platform for displaying and promoting vetted products and services across Ghana. Browse, call, WhatsApp, and request bookings directly.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
