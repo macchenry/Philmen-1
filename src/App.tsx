@@ -11,6 +11,7 @@ import { SearchPage } from './pages/SearchPage';
 import { HowItWorksPage } from './pages/HowItWorksPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
+import { FounderPage } from './pages/FounderPage';
 import { SitemapPage } from './pages/SitemapPage';
 import { DashboardLayout } from './components/dashboard/DashboardLayout';
 import { ManagerOwnerDashboard } from './pages/dashboard/ManagerOwnerDashboard';
@@ -275,6 +276,10 @@ function MainApp() {
 
         {currentRoute === 'contact' && (
           <ContactPage />
+        )}
+
+        {currentRoute === 'the-founder' && (
+          <FounderPage onNavigate={navigateTo} />
         )}
 
         {currentRoute === 'sitemap' && (

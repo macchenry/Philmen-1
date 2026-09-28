@@ -196,6 +196,25 @@ export const SitemapPage: React.FC<Props> = ({ onNavigate, onSelectListing }) =>
 
               <button
                 type="button"
+                onClick={() => onNavigate('the-founder')}
+                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
+              >
+                <div>
+                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
+                    The Founder
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                    Meet Theophilus Mensah & platform vision
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
+                    Route: #the-founder
+                  </div>
+                </div>
+                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
+              </button>
+
+              <button
+                type="button"
                 onClick={() => onNavigate('contact')}
                 className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
               >

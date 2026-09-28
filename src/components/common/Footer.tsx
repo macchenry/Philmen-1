@@ -297,6 +297,12 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
               About Philmen
             </button>
             <button
+              onClick={() => onNavigate('the-founder')}
+              className="hover:text-white transition-colors"
+            >
+              The Founder
+            </button>
+            <button
               onClick={() => onNavigate('contact')}
               className="hover:text-white transition-colors"
             >

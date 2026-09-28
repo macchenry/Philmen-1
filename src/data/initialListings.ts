@@ -12,8 +12,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Energy-saving digital inverter Samsung double door refrigerator with multi-airflow cooling and frost-free technology.',
     fullDescription: 'Experience superior cooling and long-lasting freshness with the Samsung 535L Inverter Double Door Refrigerator. Engineered with smart digital inverter compressor technology, it reduces energy consumption by up to 40% while maintaining optimum humidity for fruits and vegetables. Includes power-cool and power-freeze modes, tempered glass shelves, anti-bacterial seal, and modern stainless steel finish.',
     images: [
-      '/src/assets/images/product_samsung_fridge_1790521460343.jpg',
-      'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/TqWh7mdB/001-Samsung-Double-Fridge.jpg'
     ],
     price: 8500,
     priceType: 'exact',
@@ -44,8 +43,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Ultra-quiet 2.0HP Gree energy-efficient split unit air conditioner with rapid turbo cooling and I-Feel intelligent sensor.',
     fullDescription: 'The Gree 2.0 HP Eco Inverter Air Conditioner is designed specifically for tropical climates, delivering rapid, quiet cooling while cutting electricity usage. Equipped with high-density gold fin anti-corrosion protection, smart self-cleaning, and intelligent temperature sensing via the remote control. Complete with official Philmen warranty coverage.',
     images: [
-      'https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1585338107529-13afc5f02586?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/4wJ7S3V9/014-Sigma-Airconditioner.jpg'
     ],
     price: 4950,
     priceType: 'exact',
@@ -74,7 +72,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Lightweight, explosion-proof translucent composite LPG gas cylinder with anti-leak automatic safety shut-off regulator.',
     fullDescription: 'Upgrade your home cooking safety with this certified 14.5kg translucent composite LPG cylinder. Unlike heavy steel cylinders, it is 100% rust-free, lightweight, explosion-proof under extreme heat, and lets you visually inspect gas levels at any time. Comes bundled with an EU-standard high-precision pressure regulator and reinforced safety hose.',
     images: [
-      'https://images.unsplash.com/photo-1584285418504-0051b4d50937?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/Swwp6nMM/011-Gas-Cylinder.jpg'
     ],
     price: 980,
     priceType: 'exact',
@@ -92,6 +90,96 @@ export const INITIAL_LISTINGS: Listing[] = [
     createdAt: '2026-03-14T08:45:00.000Z',
     updatedAt: '2026-03-14T08:45:00.000Z'
   },
+  {
+    id: 'PH-EL-004',
+    title: '50kg Heavy-Duty Industrial Steel LPG Gas Cylinder (GSA Certified)',
+    slug: '50kg-heavy-duty-industrial-steel-lpg-gas-cylinder',
+    type: 'Product',
+    category: 'Electronic & Electricals',
+    subcategory: 'Gas Cylinders',
+    shortDescription: 'Heavy-gauge reinforced 50kg industrial LPG gas cylinder with high-flow brass valve for hotels, bakeries, restaurants, and catering outfits.',
+    fullDescription: 'Engineered for high-capacity catering and industrial applications in Ghana. Built with 3.5mm thick high-tensile HP295 steel, hot-dip galvanized anti-corrosive base ring, and Ghana Standards Authority (GSA) certified brass safety valve with built-in pressure release. Ideal for commercial kitchens, schools, food processing factories, and restaurants across Accra and nationwide.',
+    images: [
+      'https://i.ibb.co/svzqxf7d/009-Gas-Cylinder-1.jpg'
+    ],
+    price: 1850,
+    priceType: 'exact',
+    priceDisplay: 'GH₵ 1,850',
+    location: 'North Industrial Area, Accra',
+    status: 'published',
+    featured: true,
+    isSampleData: true,
+    specifications: {
+      'Capacity': '50 kg LPG (108 Liters Water Volume)',
+      'Material': 'HP295 Heavy-Gauge Cold-Rolled Steel (3.5mm)',
+      'Safety Standard': 'Ghana Standards Authority & NPA Certified',
+      'Test Pressure': '34 Bar (3.4 MPa) Hydrostatic Verified',
+      'Valve': 'Heavy-duty brass industrial valve with safety relief',
+      'Applications': 'Hotels, Bakeries, Restaurants & Industrial Processing'
+    },
+    createdAt: '2026-03-17T09:30:00.000Z',
+    updatedAt: '2026-03-24T15:00:00.000Z'
+  },
+  {
+    id: 'PH-EL-005',
+    title: '6kg Compact Domestic Steel Gas Cylinder with Heavy-Duty Cooker Burner Top',
+    slug: '6kg-compact-domestic-steel-gas-cylinder-with-burner',
+    type: 'Product',
+    category: 'Electronic & Electricals',
+    subcategory: 'Gas Cylinders',
+    shortDescription: 'Portable 6kg steel LPG cylinder with direct screw-on cast iron burner and safety handle, ideal for apartments, single homes, and student hostels.',
+    fullDescription: 'Convenient, economical, and space-saving 6kg domestic LPG cylinder with direct screw-on cast iron cooker top. Built from seam-welded high-density steel with anti-rust baked enamel coating. Features an integrated carry handle, broad stable base ring, and leak-tested brass valve. Perfect for studio apartments, student residences in Legon/KNUST/UCC, and emergency home backup cooking.',
+    images: [
+      'https://i.ibb.co/VWSrxwQh/010-Gas-Cylinder-2.jpg'
+    ],
+    price: 420,
+    priceType: 'exact',
+    priceDisplay: 'GH₵ 420',
+    location: 'Madina / Legon, Greater Accra',
+    status: 'published',
+    featured: false,
+    isSampleData: true,
+    specifications: {
+      'Capacity': '6 kg LPG',
+      'Construction': 'Deep-drawn stamped steel with protective anti-rust coat',
+      'Included': 'Cast iron screw-on burner top & stability stand',
+      'Safety Standard': 'GSA Approved & Hydro-Pressure Certified',
+      'Tare Weight': '5.8 kg empty',
+      'Ideal For': 'Students, Single Households & Quick Domestic Utility'
+    },
+    createdAt: '2026-03-18T10:15:00.000Z',
+    updatedAt: '2026-03-25T08:30:00.000Z'
+  },
+  {
+    id: 'PH-EL-006',
+    title: '24.5kg Anti-Explosion Translucent Composite Safety Gas Cylinder with Snap-On Regulator',
+    slug: '24kg-anti-explosion-composite-safety-gas-cylinder',
+    type: 'Product',
+    category: 'Electronic & Electricals',
+    subcategory: 'Gas Cylinders',
+    shortDescription: '100% blast-proof translucent 24.5kg composite LPG cylinder with visible fuel-level indicator, rust-free outer casing, and snap-on safety regulator.',
+    fullDescription: 'Experience modern safety with this premium 24.5kg composite LPG gas cylinder. Manufactured from three-layer seamless filament-wound fiberglass and aerospace-grade resin, it will never explode even in direct fire conditions. The semi-translucent body allows you to see the exact liquid gas level inside so you never run out during cooking. Includes click-on safety regulator and zero floor rust stains.',
+    images: [
+      'https://i.ibb.co/svzqxf7d/009-Gas-Cylinder-1.jpg'
+    ],
+    price: 1350,
+    priceType: 'exact',
+    priceDisplay: 'GH₵ 1,350',
+    location: 'Spintex / Cantonments, Accra',
+    status: 'published',
+    featured: true,
+    isSampleData: true,
+    specifications: {
+      'Capacity': '24.5 kg LPG',
+      'Material': 'High-Tensile Polyethylene & Wound Glass Fiber Composite',
+      'Safety Standards': 'EN 14427 / ISO 11119-3 Certified (Blast-Proof)',
+      'Tare Weight': 'Only 7.5 kg (50% lighter than equivalent steel)',
+      'Regulator Type': 'Quick Snap-On Safety Click Regulator Included',
+      'Key Benefits': 'Visible Gas Level, 100% Rust-Proof, Heat & Fire Safe'
+    },
+    createdAt: '2026-03-19T11:45:00.000Z',
+    updatedAt: '2026-03-25T14:20:00.000Z'
+  },
 
   // 2. Furniture
   {
@@ -104,8 +192,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Handcrafted premium velvet fabric modular sectional sofa with kiln-dried Ghanaian teak framework and high-density orthopaedic foam.',
     fullDescription: 'The Milano Sectional Sofa combines master craftsmanship with modern minimalist comfort. Built on heavy-gauge Ghanaian teak timber frames, this 6-seater sofa features stain-resistant velvet fabric, pocketed coil spring support, and reinforced joinery. Perfect for spacious executive living rooms and contemporary reception lounges.',
     images: [
-      'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/mfy9MFG/002-Milano-Sofa.jpg'
     ],
     price: '14,500 - 18,000',
     priceType: 'range',
@@ -135,8 +222,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: '20-ton Caterpillar 320D crawler excavator available for site excavation, foundation trenching, and bulk earthmoving with certified operator.',
     fullDescription: 'Philmen coordinates fully-inspected, heavy-duty CAT 320D hydraulic excavators for medium to large construction, drainage, and mining infrastructure projects across Ghana. Equipment is serviced and supplied with an experienced certified plant operator, daily maintenance support, and rapid mobilization anywhere in Greater Accra, Ashanti, and Western regions.',
     images: [
-      '/src/assets/images/service_heavy_excavator_1790521493704.jpg',
-      'https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg'
     ],
     price: 3200,
     priceType: 'service',
@@ -167,8 +253,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Factory sealed iPhone 16 Pro Max with Grade 5 Titanium chassis, A18 Pro chip, 48MP camera control, and full Apple 1-year warranty.',
     fullDescription: 'Get the latest Apple iPhone 16 Pro Max in Desert Titanium and Natural Titanium. Features a stunning 6.9-inch Super Retina XDR display with ProMotion, A18 Pro bionic chip for peak gaming and productivity, next-generation photographic styles, and all-day battery life. 100% genuine sealed stock verified through Philmen.',
     images: [
-      'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1592750475338-74b7b21085ab?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/NgyJTs13/004-Iphone-16-Pro-Max.jpg'
     ],
     price: 16800,
     priceType: 'exact',
@@ -199,8 +284,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'High-performance workstation laptop with 13th Gen Intel Core i9, 32GB DDR5 RAM, 1TB NVMe SSD, and dedicated NVIDIA RTX 4070 graphics.',
     fullDescription: 'Designed for creative professionals, architects, software engineers, and executives. The Dell XPS 15 features CNC machined aluminum, carbon fiber palm rest, a breathtaking 3.5K OLED touch display with 100% DCI-P3 color gamut, and raw computing power for 3D rendering and demanding multitasking.',
     images: [
-      'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/4vPJNXR/012-Dell-XPS-15-9530.jpg'
     ],
     price: 26500,
     priceType: 'negotiable',
@@ -231,8 +315,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Prime 1.2-acre roadside commercial land with Land Title Certificate (LDC), ideal for corporate headquarters, hotel, or retail complex.',
     fullDescription: 'Strategically located directly along the N1 George Walker Bush Motorway with high vehicular exposure and seamless access to Kotoka International Airport. Land is fully titled, litigation-free, walled, gated, and connected to 3-phase grid power and municipal water pipelines. Direct facilitation through Philmen.',
     images: [
-      'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/9mYCqMbD/005-Land-for-Development.jpg'
     ],
     price: 'Contact for Price',
     priceType: 'contact',
@@ -262,8 +345,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Direct foreign-used 2022 Toyota Corolla LE with 1.8L fuel-efficient engine, lane departure assist, reverse camera, and 34,000 km.',
     fullDescription: 'Unregistered clean foreign-used 2022 Toyota Corolla LE. Finished in pearl white with pristine dark charcoal fabric interior. Key features include Toyota Safety Sense 2.0 with pre-collision detection, adaptive cruise control, Apple CarPlay/Android Auto touch screen, keyless entry, and ice-cold factory AC. Full customs clearance documentation available.',
     images: [
-      '/src/assets/images/product_toyota_corolla_1790521470974.jpg',
-      'https://images.unsplash.com/photo-1590362891988-37f2a74c4a45?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/9mYCqMbD/005-Land-for-Development.jpg'
     ],
     price: 215000,
     priceType: 'exact',
@@ -295,8 +377,8 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Luxury 4x4 Land Cruiser Prado with professional suit-clad chauffeur for executive delegations, weddings, VIP airport pickup, and regional trips.',
     fullDescription: 'Enjoy smooth, secure, and prestigious transport with Philmen executive car rental services. Our top-spec Toyota Land Cruiser Prado VXR includes a seasoned, professional English-speaking chauffeur, in-car Wi-Fi, bottled mineral water, and full comprehensive insurance. Available for daily hire within Greater Accra or intercity deployment to Kumasi, Takoradi, and Tamale.',
     images: [
-      'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/fzY197WN/006-Toyota-Corolla-LE-2022.jpg',
+      'https://i.ibb.co/Gv8vXdQR/007-Toyota-Land-Cruiser.jpg'
     ],
     price: 1800,
     priceType: 'rental',
@@ -327,8 +409,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Modern, fully air-conditioned 2-bedroom en-suite serviced apartment in a gated residential enclave with standby generator and gym.',
     fullDescription: 'Located in the prime residential hub of East Legon, this 2-bedroom executive apartment comes fully furnished with Italian fitted kitchen, washing machine, smart TVs, high-speed fibre internet, private balcony, swimming pool access, and continuous 24-hour manned security with CCTV surveillance. Water supply and automatic standby generator included in rent.',
     images: [
-      'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/6cXmtvS1/008-2-Bedroom-Luxury-Apartment.jpg'
     ],
     price: 2500,
     priceType: 'rental',
@@ -359,7 +440,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Rapid-response hydraulic zero-degree flatbed tow trucks for luxury sedans, SUVs, disabled vehicles, and machinery transport.',
     fullDescription: 'Fast, secure, damage-free vehicle recovery coordinated across Greater Accra and inter-regional highways. Our modern hydraulic slide-bed tow trucks ensure zero bumper scraping for low-clearance sports cars and luxury SUVs. Available 24 hours daily with prompt dispatch and experienced recovery specialists.',
     images: [
-      'https://images.unsplash.com/photo-1586191582056-a6c8e3170425?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg'
     ],
     price: 650,
     priceType: 'service',
@@ -389,8 +470,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Certified standard high-tensile 10mm, 12mm, 16mm, and 20mm ribbed iron rods with direct site crane-offloading across Ghana.',
     fullDescription: 'Philmen coordinates bulk and retail supply of certified B500B standard ribbed steel reinforcement rods for foundations, columns, beams, and suspended slabs. All rods undergo stringent tensile tests to meet Ghana Standards Authority (GSA) guidelines. Bulk delivery straight to your construction site with automated weight receipts.',
     images: [
-      'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1581094288338-2314dddb7ece?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg'
     ],
     price: 8900,
     priceType: 'exact',
@@ -420,8 +500,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Pure luxury 30% concentration extrait de parfum with smoky Cambodian agarwood, Madagascar vanilla, and saffron notes.',
     fullDescription: 'Handcrafted for discerning connoisseurs of niche perfumery, Imperial Royal Oud delivers remarkable sillage and 24-hour skin longevity. Opens with sparkling spicy saffron and bergamot, evolving into an opulent heart of Bulgarian rose, aged agarwood (oud), and warm amber crystal.',
     images: [
-      '/src/assets/images/product_luxury_perfume_1790521482404.jpg',
-      'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/PBqbMCN/013-Suite.jpg'
     ],
     price: 1850,
     priceType: 'exact',
@@ -453,8 +532,7 @@ export const INITIAL_LISTINGS: Listing[] = [
     shortDescription: 'Super 150s pure Italian wool bespoke 3-piece suit with hand-stitched peak lapels, matching double-breasted vest, and tailored trousers.',
     fullDescription: 'Command attention in corporate boardrooms and grand celebratory occasions with this hand-finished three-piece suit. Tailored from premium Super 150s breathable Italian wool with natural shoulder construction, fully lined with silk cupro, functional buttonhole cuffs, and customized waistband adjustment tabs. In-person fitting coordinated directly via Philmen.',
     images: [
-      'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80',
-      'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80'
+      'https://i.ibb.co/PBqbMCN/013-Suite.jpg'
     ],
     price: '3,800 - 5,500',
     priceType: 'range',

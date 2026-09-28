@@ -141,7 +141,29 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [listings, setListings] = useState<Listing[]>(() => {
     try {
       const saved = localStorage.getItem('philmen_listings');
-      return saved ? JSON.parse(saved) : INITIAL_LISTINGS;
+      if (saved) {
+        const parsed: Listing[] = JSON.parse(saved);
+        const initialMap = new Map(INITIAL_LISTINGS.map(item => [item.id, item]));
+        // Sync official listings with the new image mappings
+        const updatedParsed = parsed.map(item => {
+          const initialMatch = initialMap.get(item.id);
+          if (initialMatch) {
+            return {
+              ...item,
+              images: initialMatch.images
+            };
+          }
+          return item;
+        });
+
+        const existingIds = new Set(updatedParsed.map(item => item.id));
+        const missingInitial = INITIAL_LISTINGS.filter(item => !existingIds.has(item.id));
+        if (missingInitial.length > 0) {
+          return [...updatedParsed, ...missingInitial];
+        }
+        return updatedParsed;
+      }
+      return INITIAL_LISTINGS;
     } catch {
       return INITIAL_LISTINGS;
     }

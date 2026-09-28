@@ -49,7 +49,7 @@ const SERVICE_PREVIEWS: Record<ServiceTab, ServicePreviewData> = {
     title: 'Toyota Land Cruiser Prado VXR',
     badge: 'Chauffeur Executive Fleet',
     priceDisplay: 'GH₵ 1,800 / Day',
-    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80',
+    image: 'https://i.ibb.co/fzY197WN/006-Toyota-Corolla-LE-2022.jpg',
     features: ['Vetted English-speaking chauffeur', 'Airport VIP pickup & protocol', 'Full comprehensive insurance', 'In-car Wi-Fi & chilled water'],
     location: 'Airport City, Accra & Nationwide',
     categorySlug: 'car-rentals'
@@ -58,7 +58,7 @@ const SERVICE_PREVIEWS: Record<ServiceTab, ServicePreviewData> = {
     title: 'CAT 320D Hydraulic Crawler Excavator',
     badge: 'Heavy Plant Mobilization',
     priceDisplay: 'GH₵ 3,200 / Day',
-    image: '/src/assets/images/service_heavy_excavator_1790521493704.jpg',
+    image: 'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg',
     features: ['20-Ton operating capacity', 'Certified plant operator included', 'Daily on-site maintenance', 'Fast mobilization to any region'],
     location: 'Tema Industrial Area & Nationwide',
     categorySlug: 'construction-and-heavy-equipment'
@@ -67,7 +67,7 @@ const SERVICE_PREVIEWS: Record<ServiceTab, ServicePreviewData> = {
     title: 'Luxury 2-Bedroom Serviced Apartment',
     badge: 'Prime Residential Short-let',
     priceDisplay: '$2,500 / Month (GH₵ Equivalent)',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80',
+    image: 'https://i.ibb.co/6cXmtvS1/008-2-Bedroom-Luxury-Apartment.jpg',
     features: ['24/7 Security & CCTV', 'Swimming pool & private gym', 'Standby automatic generator', 'Italian fitted kitchen & balcony'],
     location: 'East Legon (Near Mensvic), Accra',
     categorySlug: 'home-rentals'
@@ -76,7 +76,7 @@ const SERVICE_PREVIEWS: Record<ServiceTab, ServicePreviewData> = {
     title: '24/7 Emergency Hydraulic Flatbed Recovery',
     badge: 'Rapid Response Fleet',
     priceDisplay: 'From GH₵ 650 (Distance-Based)',
-    image: 'https://images.unsplash.com/photo-1586191582056-a6c8e3170425?auto=format&fit=crop&w=800&q=80',
+    image: 'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg',
     features: ['Zero-degree damage-free slide bed', 'Average 25-40 min arrival in Accra', 'Luxury sedans, 4x4s & vans', 'Intercity recovery corridors'],
     location: 'Greater Accra, Tema & Highways',
     categorySlug: 'towing'
@@ -85,7 +85,7 @@ const SERVICE_PREVIEWS: Record<ServiceTab, ServicePreviewData> = {
     title: 'Savile Row Italian Wool 3-Piece Suit',
     badge: 'Bespoke Executive Fitting',
     priceDisplay: 'GH₵ 3,800 – GH₵ 5,500',
-    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80',
+    image: 'https://i.ibb.co/PBqbMCN/013-Suite.jpg',
     features: ['Super 150s breathable Italian wool', 'Private home/office measurement', 'Hand-stitched peak lapels', 'Bespoke silk cupro lining'],
     location: 'Airport Residential, Accra',
     categorySlug: 'suits'

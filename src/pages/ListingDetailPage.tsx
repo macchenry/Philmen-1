@@ -96,7 +96,7 @@ export const ListingDetailPage: React.FC<Props> = ({
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover transition-all duration-300"
               onError={(e) => {
-                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80';
+                (e.target as HTMLImageElement).src = 'https://i.ibb.co/6cXmtvS1/008-2-Bedroom-Luxury-Apartment.jpg';
               }}
             />
 

@@ -8,7 +8,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'High-performance air conditioners, certified gas cylinders, refrigerators, and essential home & office electrical appliances.',
     subcategories: ['Air Conditioners', 'Gas Cylinders', 'Fridges'],
     icon: 'Tv',
-    image: '/src/assets/images/product_samsung_fridge_1790521460343.jpg'
+    image: 'https://i.ibb.co/TqWh7mdB/001-Samsung-Double-Fridge.jpg'
   },
   {
     id: 'cat-furniture',
@@ -17,7 +17,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Contemporary living room sets, ergonomic executive office furniture, handcrafted dining tables, and luxury bedroom furnishings.',
     subcategories: ['Living Room', 'Office Furniture', 'Bedroom Sets', 'Dining Sets'],
     icon: 'Armchair',
-    image: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80'
+    image: 'https://i.ibb.co/mfy9MFG/002-Milano-Sofa.jpg'
   },
   {
     id: 'cat-heavy-equipment',
@@ -26,7 +26,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Certified excavators, wheel loaders, backhoes, site cranes, and heavy roadworks machinery available for project deployment.',
     subcategories: ['Excavators', 'Loaders & Backhoes', 'Cranes', 'Compaction Equipment'],
     icon: 'HardHat',
-    image: '/src/assets/images/service_heavy_excavator_1790521493704.jpg'
+    image: 'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg'
   },
   {
     id: 'cat-phones',
@@ -35,7 +35,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Flagship smartphones, durable business handsets, 5G devices, and genuine mobile communication hardware.',
     subcategories: ['iOS Smartphones', 'Android Flagships', 'Budget & Utility Handsets'],
     icon: 'Smartphone',
-    image: 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80'
+    image: 'https://i.ibb.co/NgyJTs13/004-Iphone-16-Pro-Max.jpg'
   },
   {
     id: 'cat-laptops',
@@ -44,7 +44,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'High-spec workstation laptops, ultrabooks for executives, developer notebooks, and enterprise computing hardware.',
     subcategories: ['Executive Ultrabooks', 'Developer Workstations', 'Budget Productivity'],
     icon: 'Laptop',
-    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=800&q=80'
+    image: 'https://i.ibb.co/4vPJNXR/012-Dell-XPS-15-9530.jpg'
   },
   {
     id: 'cat-real-estate',
@@ -53,7 +53,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Prime commercial spaces, executive office developments, residential plots, and titled investment properties across Ghana.',
     subcategories: ['Commercial Property', 'Residential Land & Plots', 'Luxury Estates'],
     icon: 'Building2',
-    image: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=800&q=80'
+    image: 'https://i.ibb.co/9mYCqMbD/005-Land-for-Development.jpg'
   },
   {
     id: 'cat-car-sales',
@@ -62,7 +62,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Vetted registered and unregistered sedans, luxury SUVs, commercial pickup trucks, and executive vehicles for outright purchase.',
     subcategories: ['Sedans', 'SUVs & 4x4', 'Commercial Pickups', 'Luxury Vehicles'],
     icon: 'Car',
-    image: '/src/assets/images/product_toyota_corolla_1790521470974.jpg'
+    image: 'https://i.ibb.co/9mYCqMbD/005-Land-for-Development.jpg'
   },
   {
     id: 'cat-car-rentals',
@@ -71,7 +71,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Chauffeur-driven executive VIP sedans, airport transfers, self-drive 4x4s, and corporate fleet rentals for short and long-term lease.',
     subcategories: ['Daily Rental', 'Airport Transfer', 'Corporate Lease', 'VIP Escort'],
     icon: 'Key',
-    image: 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80'
+    image: 'https://i.ibb.co/fzY197WN/006-Toyota-Corolla-LE-2022.jpg'
   },
   {
     id: 'cat-home-rentals',
@@ -80,7 +80,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Furnished executive apartments, gated community townhouses, 2-to-4 bedroom family houses for short and long-term rental.',
     subcategories: ['Furnished Apartments', 'Gated Townhouses', 'Short-let Stays', 'Family Homes'],
     icon: 'Home',
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80'
+    image: 'https://i.ibb.co/6cXmtvS1/008-2-Bedroom-Luxury-Apartment.jpg'
   },
   {
     id: 'cat-towing',
@@ -89,7 +89,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: '24/7 rapid vehicle towing, flatbed breakdown recovery, heavy-duty truck towing, and interstate vehicle transport services.',
     subcategories: ['Flatbed Towing', 'Heavy-Duty Recovery', 'Breakdown Assistance', 'Intercity Haulage'],
     icon: 'Truck',
-    image: 'https://images.unsplash.com/photo-1586191582056-a6c8e3170425?auto=format&fit=crop&w=800&q=80'
+    image: 'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg'
   },
   {
     id: 'cat-building-materials',
@@ -98,7 +98,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'High-grade Portland cement, reinforcement iron rods, quarry stones, sharp sand, roofing sheets, and structural construction supplies.',
     subcategories: ['Iron Rods & Steel', 'Cement & Aggregates', 'Roofing & Timber', 'Plumbing & Electrical'],
     icon: 'Layers',
-    image: 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80'
+    image: 'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg'
   },
   {
     id: 'cat-perfume',
@@ -107,7 +107,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Authentic designer perfumes, artisanal Arabian oud, long-lasting niche fragrances, and luxury scent collections.',
     subcategories: ['Men Fragrances', 'Women Fragrances', 'Unisex & Niche Oud', 'Gift Sets'],
     icon: 'Sparkles',
-    image: '/src/assets/images/product_luxury_perfume_1790521482404.jpg'
+    image: 'https://i.ibb.co/PBqbMCN/013-Suite.jpg'
   },
   {
     id: 'cat-suits',
@@ -116,7 +116,7 @@ export const CATEGORIES: CategoryInfo[] = [
     description: 'Bespoke tailored two-piece and three-piece men suits, executive blazers, tuxedos, and premium formal wear for corporate and wedding occasions.',
     subcategories: ['Three-Piece Suits', 'Corporate Two-Piece', 'Tuxedos & Wedding', 'Blazers & Trousers'],
     icon: 'Shirt',
-    image: 'https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=800&q=80'
+    image: 'https://i.ibb.co/PBqbMCN/013-Suite.jpg'
   }
 ];
 
