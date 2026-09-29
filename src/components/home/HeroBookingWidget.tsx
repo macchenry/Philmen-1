@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
 import {
   Car,
-  HardHat,
-  Home,
-  Truck,
-  Shirt,
-  Calendar,
-  Clock,
+  Key,
+  Tv,
   MapPin,
   Phone,
   User,
@@ -14,15 +10,8 @@ import {
   CheckCircle2,
   MessageSquare,
   ShieldCheck,
-  ChevronDown,
-  Sparkles,
-  Search,
   ArrowRight,
-  Star,
-  Check,
-  Fuel,
-  Shield,
-  BadgeCheck
+  Check
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { Listing, PreferredContactMethod } from '../../types';
@@ -32,7 +21,7 @@ interface Props {
   onOpenListing: (listing: Listing) => void;
 }
 
-type ServiceTab = 'car-rentals' | 'heavy-equipment' | 'home-rentals' | 'towing' | 'suits';
+type ServiceTab = 'car-rental' | 'car-sales' | 'electronics-appliances';
 
 interface ServicePreviewData {
   title: string;
@@ -45,57 +34,39 @@ interface ServicePreviewData {
 }
 
 const SERVICE_PREVIEWS: Record<ServiceTab, ServicePreviewData> = {
-  'car-rentals': {
+  'car-rental': {
     title: 'Toyota Land Cruiser Prado VXR',
     badge: 'Chauffeur Executive Fleet',
     priceDisplay: 'GH₵ 1,800 / Day',
     image: 'https://i.ibb.co/fzY197WN/006-Toyota-Corolla-LE-2022.jpg',
     features: ['Vetted English-speaking chauffeur', 'Airport VIP pickup & protocol', 'Full comprehensive insurance', 'In-car Wi-Fi & chilled water'],
     location: 'Airport City, Accra & Nationwide',
-    categorySlug: 'car-rentals'
+    categorySlug: 'car-rental'
   },
-  'heavy-equipment': {
-    title: 'CAT 320D Hydraulic Crawler Excavator',
-    badge: 'Heavy Plant Mobilization',
-    priceDisplay: 'GH₵ 3,200 / Day',
-    image: 'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg',
-    features: ['20-Ton operating capacity', 'Certified plant operator included', 'Daily on-site maintenance', 'Fast mobilization to any region'],
-    location: 'Tema Industrial Area & Nationwide',
-    categorySlug: 'construction-and-heavy-equipment'
+  'car-sales': {
+    title: 'Toyota Corolla LE 2022 (Foreign Used)',
+    badge: 'Vetted Quality Inventory',
+    priceDisplay: 'GH₵ 215,000',
+    image: 'https://i.ibb.co/9mYCqMbD/005-Land-for-Development.jpg',
+    features: ['Direct foreign-used clean title', 'Pre-inspection report available', 'Duty fully paid with documents', 'Physical viewing & test drive'],
+    location: 'Achimota Mile 7, Accra',
+    categorySlug: 'car-sales'
   },
-  'home-rentals': {
-    title: 'Luxury 2-Bedroom Serviced Apartment',
-    badge: 'Prime Residential Short-let',
-    priceDisplay: '$2,500 / Month (GH₵ Equivalent)',
-    image: 'https://i.ibb.co/6cXmtvS1/008-2-Bedroom-Luxury-Apartment.jpg',
-    features: ['24/7 Security & CCTV', 'Swimming pool & private gym', 'Standby automatic generator', 'Italian fitted kitchen & balcony'],
-    location: 'East Legon (Near Mensvic), Accra',
-    categorySlug: 'home-rentals'
-  },
-  'towing': {
-    title: '24/7 Emergency Hydraulic Flatbed Recovery',
-    badge: 'Rapid Response Fleet',
-    priceDisplay: 'From GH₵ 650 (Distance-Based)',
-    image: 'https://i.ibb.co/HLNyjGzj/003-CAT-Excavator.jpg',
-    features: ['Zero-degree damage-free slide bed', 'Average 25-40 min arrival in Accra', 'Luxury sedans, 4x4s & vans', 'Intercity recovery corridors'],
-    location: 'Greater Accra, Tema & Highways',
-    categorySlug: 'towing'
-  },
-  'suits': {
-    title: 'Savile Row Italian Wool 3-Piece Suit',
-    badge: 'Bespoke Executive Fitting',
-    priceDisplay: 'GH₵ 3,800 – GH₵ 5,500',
-    image: 'https://i.ibb.co/PBqbMCN/013-Suite.jpg',
-    features: ['Super 150s breathable Italian wool', 'Private home/office measurement', 'Hand-stitched peak lapels', 'Bespoke silk cupro lining'],
-    location: 'Airport Residential, Accra',
-    categorySlug: 'suits'
+  'electronics-appliances': {
+    title: 'Samsung 535L Inverter Double Door Refrigerator',
+    badge: 'Genuine Home Appliances',
+    priceDisplay: 'GH₵ 8,500',
+    image: 'https://i.ibb.co/TqWh7mdB/001-Samsung-Double-Fridge.jpg',
+    features: ['Digital Inverter 10-Year Warranty', 'Multi-airflow frost-free cooling', 'Fast delivery across Greater Accra', 'ACs & gas cylinders also available'],
+    location: 'Spintex Road, Accra',
+    categorySlug: 'electronics-electricals-and-home-appliances'
   }
 };
 
 export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }) => {
   const { listings, submitInquiry, contactSettings } = useApp();
 
-  const [activeTab, setActiveTab] = useState<ServiceTab>('car-rentals');
+  const [activeTab, setActiveTab] = useState<ServiceTab>('car-rental');
   
   // Common Form State
   const [customerName, setCustomerName] = useState('');
@@ -110,28 +81,15 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
   const [pickupDate, setPickupDate] = useState('');
   const [returnDate, setReturnDate] = useState('');
   
-  // 2. Heavy Equipment State
-  const [equipmentType, setEquipmentType] = useState('CAT 320D Hydraulic Excavator (20-Ton)');
-  const [projectLocation, setProjectLocation] = useState('Tema Industrial / Greater Accra');
-  const [operatorRequired, setOperatorRequired] = useState('Yes (Certified Operator Included)');
-  const [projectStartDate, setProjectStartDate] = useState('');
+  // 2. Car Sales State
+  const [saleVehicleType, setSaleVehicleType] = useState('Toyota Corolla LE 2022 (Foreign Used)');
+  const [purchasePreference, setPurchasePreference] = useState('Physical Viewing & Test Drive');
+  const [preferredInspectionDate, setPreferredInspectionDate] = useState('');
 
-  // 3. Home Rental State
-  const [homeType, setHomeType] = useState('Luxury 2-Bedroom Furnished Apartment (East Legon)');
-  const [homeLocation, setHomeLocation] = useState('East Legon, Accra');
-  const [leaseDuration, setLeaseDuration] = useState('Short-let (1–4 Weeks)');
-  const [moveInDate, setMoveInDate] = useState('');
-
-  // 4. Towing State
-  const [towingService, setTowingService] = useState('Emergency Hydraulic Flatbed Towing');
-  const [vehicleMakeModel, setVehicleMakeModel] = useState('');
-  const [breakdownLocation, setBreakdownLocation] = useState('');
-  const [towingDestination, setTowingDestination] = useState('');
-
-  // 5. Suit Fitting State
-  const [suitStyle, setSuitStyle] = useState('Savile Row Italian Wool 3-Piece Bespoke Suit');
-  const [fittingType, setFittingType] = useState('Executive Office / Home Measurement Visit');
-  const [fittingDate, setFittingDate] = useState('');
+  // 3. Electronics & Appliances State
+  const [applianceItem, setApplianceItem] = useState('Samsung 535L Inverter Double Door Refrigerator');
+  const [deliveryArea, setDeliveryArea] = useState('Accra / Tema');
+  const [orderQuantity, setOrderQuantity] = useState('1 Unit');
 
   // Submission State
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -143,11 +101,9 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
   // Helper to find matching listing or synthetic listing
   const getAssociatedListing = (): Listing => {
     const categoryNameMap: Record<ServiceTab, string> = {
-      'car-rentals': 'Car Rentals',
-      'heavy-equipment': 'Construction & Heavy Equipment',
-      'home-rentals': 'Home Rentals',
-      'towing': 'Towing',
-      'suits': 'Suits'
+      'car-rental': 'Car Rental',
+      'car-sales': 'Car Sales',
+      'electronics-appliances': 'Electronics, Electricals & Home Appliances'
     };
 
     const targetCat = categoryNameMap[activeTab];
@@ -158,13 +114,13 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
       id: `PH-${activeTab.toUpperCase().slice(0, 4)}-01`,
       title: currentPreview.title,
       slug: currentPreview.categorySlug,
-      type: 'Service',
+      type: activeTab === 'car-rental' ? 'Service' : 'Product',
       category: targetCat,
       shortDescription: currentPreview.badge,
       fullDescription: `Reservation request for ${currentPreview.title}`,
       images: [currentPreview.image],
       price: currentPreview.priceDisplay,
-      priceType: 'service',
+      priceType: activeTab === 'car-rental' ? 'rental' : 'exact',
       priceDisplay: currentPreview.priceDisplay,
       location: currentPreview.location,
       status: 'published',
@@ -183,26 +139,18 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
     let summaryText = '';
     let preferredSchedule = '';
 
-    if (activeTab === 'car-rentals') {
+    if (activeTab === 'car-rental') {
       constructedMessage = `CAR RENTAL RESERVATION:\n- Vehicle: ${carModel}\n- Option: ${carRentalType}\n- Pickup Location: ${pickupLocation}\n- Pickup Date: ${pickupDate || 'Earliest Available'}\n- Return Date: ${returnDate || 'Flexible'}\n- Client: ${customerName} (${customerPhone})`;
       summaryText = `Car Rental: ${carModel} (${carRentalType})`;
       preferredSchedule = pickupDate ? `Pickup: ${pickupDate} (Return: ${returnDate || 'TBD'})` : 'Earliest Available';
-    } else if (activeTab === 'heavy-equipment') {
-      constructedMessage = `HEAVY EQUIPMENT HIRE:\n- Machinery: ${equipmentType}\n- Site Location: ${projectLocation}\n- Operator: ${operatorRequired}\n- Start Date: ${projectStartDate || 'Immediate'}\n- Client: ${customerName} (${customerPhone})`;
-      summaryText = `Heavy Equipment: ${equipmentType}`;
-      preferredSchedule = projectStartDate || 'Immediate Deployment';
-    } else if (activeTab === 'home-rentals') {
-      constructedMessage = `HOME RENTAL INQUIRY:\n- Property: ${homeType}\n- Preferred Area: ${homeLocation}\n- Term: ${leaseDuration}\n- Target Move-in: ${moveInDate || 'Flexible'}\n- Client: ${customerName} (${customerPhone})`;
-      summaryText = `Home Rental: ${homeType}`;
-      preferredSchedule = moveInDate ? `Move-in: ${moveInDate} (${leaseDuration})` : leaseDuration;
-    } else if (activeTab === 'towing') {
-      constructedMessage = `EMERGENCY TOWING DISPATCH:\n- Service: ${towingService}\n- Vehicle: ${vehicleMakeModel || 'Specified upon call'}\n- Breakdown Spot: ${breakdownLocation || 'Location TBD'}\n- Destination: ${towingDestination || 'TBD'}\n- Client: ${customerName} (${customerPhone})`;
-      summaryText = `Towing Recovery: ${towingService}`;
-      preferredSchedule = 'Urgent / Immediate Dispatch';
-    } else if (activeTab === 'suits') {
-      constructedMessage = `BESPOKE SUIT FITTING:\n- Style: ${suitStyle}\n- Appointment: ${fittingType}\n- Preferred Date: ${fittingDate || 'Flexible'}\n- Client: ${customerName} (${customerPhone})`;
-      summaryText = `Suit Fitting: ${suitStyle}`;
-      preferredSchedule = fittingDate || 'Flexible Fitting Schedule';
+    } else if (activeTab === 'car-sales') {
+      constructedMessage = `CAR SALES / INSPECTION INQUIRY:\n- Vehicle: ${saleVehicleType}\n- Action: ${purchasePreference}\n- Inspection Date: ${preferredInspectionDate || 'Flexible Schedule'}\n- Client: ${customerName} (${customerPhone})`;
+      summaryText = `Car Sales: ${saleVehicleType}`;
+      preferredSchedule = preferredInspectionDate || 'Inspection to be confirmed';
+    } else if (activeTab === 'electronics-appliances') {
+      constructedMessage = `ELECTRONICS & APPLIANCES INQUIRY:\n- Item: ${applianceItem}\n- Quantity: ${orderQuantity}\n- Delivery Area: ${deliveryArea}\n- Client: ${customerName} (${customerPhone})`;
+      summaryText = `Appliances: ${applianceItem}`;
+      preferredSchedule = 'Standard Delivery';
     }
 
     const createdInquiry = submitInquiry({
@@ -227,97 +175,83 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
     setCustomerEmail('');
     setPickupDate('');
     setReturnDate('');
-    setProjectStartDate('');
-    setMoveInDate('');
-    setFittingDate('');
+    setPreferredInspectionDate('');
   };
 
   return (
     <div className="bg-slate-900/90 backdrop-blur-xl rounded-2xl sm:rounded-3xl border border-slate-700/70 shadow-2xl overflow-hidden text-white w-full">
       
-      {/* Tab Selector Bar with touch smooth scroll */}
+      {/* Tab Selector Bar */}
       <div className="p-2.5 sm:p-4 bg-slate-950/70 border-b border-slate-800">
-        <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none pb-1 sm:pb-0 touch-pan-x">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
           
-          {/* TAB 1: CAR RENTALS */}
+          {/* TAB 1: CAR RENTAL */}
           <button
             type="button"
-            onClick={() => setActiveTab('car-rentals')}
-            className={`px-3 sm:px-4 py-2 sm:py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 shrink-0 cursor-pointer ${
-              activeTab === 'car-rentals'
+            onClick={() => setActiveTab('car-rental')}
+            className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-between gap-2 cursor-pointer ${
+              activeTab === 'car-rental'
                 ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 ring-1 ring-amber-400'
-                : 'bg-amber-500/15 text-amber-300 hover:bg-amber-500/25 border border-amber-500/30'
+                : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60'
             }`}
           >
-            <Car className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-            <span className="tracking-wide">Car Rentals</span>
-            <span className={`text-[9px] sm:text-[10px] px-1.5 py-0.2 rounded-sm font-extrabold uppercase ${
-              activeTab === 'car-rentals' ? 'bg-slate-950 text-amber-400' : 'bg-amber-400 text-slate-950'
+            <div className="flex items-center gap-2 truncate">
+              <Key className="w-4 h-4 shrink-0" />
+              <span className="tracking-wide truncate">Car Rental</span>
+            </div>
+            <span className={`text-[9px] px-1.5 py-0.5 rounded font-extrabold uppercase shrink-0 ${
+              activeTab === 'car-rental' ? 'bg-slate-950 text-amber-400' : 'bg-amber-400/20 text-amber-300'
             }`}>
-              Primary Fleet
+              Chauffeur & Fleet
             </span>
           </button>
 
-          {/* TAB 2: HEAVY EQUIPMENT */}
+          {/* TAB 2: CAR SALES */}
           <button
             type="button"
-            onClick={() => setActiveTab('heavy-equipment')}
-            className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 sm:gap-2 shrink-0 cursor-pointer ${
-              activeTab === 'heavy-equipment'
-                ? 'bg-white text-slate-950 font-bold shadow-md'
+            onClick={() => setActiveTab('car-sales')}
+            className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-between gap-2 cursor-pointer ${
+              activeTab === 'car-sales'
+                ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 ring-1 ring-amber-400'
                 : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60'
             }`}
           >
-            <HardHat className="w-3.5 h-3.5" />
-            <span>Heavy Machinery</span>
+            <div className="flex items-center gap-2 truncate">
+              <Car className="w-4 h-4 shrink-0" />
+              <span className="tracking-wide truncate">Car Sales</span>
+            </div>
+            <span className={`text-[9px] px-1.5 py-0.5 rounded font-extrabold uppercase shrink-0 ${
+              activeTab === 'car-sales' ? 'bg-slate-950 text-amber-400' : 'bg-amber-400/20 text-amber-300'
+            }`}>
+              Foreign-Used & New
+            </span>
           </button>
 
-          {/* TAB 3: HOME RENTALS */}
+          {/* TAB 3: ELECTRONICS & APPLIANCES */}
           <button
             type="button"
-            onClick={() => setActiveTab('home-rentals')}
-            className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 sm:gap-2 shrink-0 cursor-pointer ${
-              activeTab === 'home-rentals'
-                ? 'bg-white text-slate-950 font-bold shadow-md'
+            onClick={() => setActiveTab('electronics-appliances')}
+            className={`px-3 sm:px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-between gap-2 cursor-pointer ${
+              activeTab === 'electronics-appliances'
+                ? 'bg-amber-500 text-slate-950 shadow-lg shadow-amber-500/20 ring-1 ring-amber-400'
                 : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60'
             }`}
           >
-            <Home className="w-3.5 h-3.5" />
-            <span>Home Rentals</span>
-          </button>
-
-          {/* TAB 4: 24/7 TOWING */}
-          <button
-            type="button"
-            onClick={() => setActiveTab('towing')}
-            className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 sm:gap-2 shrink-0 cursor-pointer ${
-              activeTab === 'towing'
-                ? 'bg-white text-slate-950 font-bold shadow-md'
-                : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60'
-            }`}
-          >
-            <Truck className="w-3.5 h-3.5" />
-            <span>24/7 Towing</span>
-          </button>
-
-          {/* TAB 5: SUITS */}
-          <button
-            type="button"
-            onClick={() => setActiveTab('suits')}
-            className={`px-3 sm:px-3.5 py-2 sm:py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 sm:gap-2 shrink-0 cursor-pointer ${
-              activeTab === 'suits'
-                ? 'bg-white text-slate-950 font-bold shadow-md'
-                : 'bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/60'
-            }`}
-          >
-            <Shirt className="w-3.5 h-3.5" />
-            <span>Bespoke Suits</span>
+            <div className="flex items-center gap-2 truncate">
+              <Tv className="w-4 h-4 shrink-0" />
+              <span className="tracking-wide truncate">Electronics & Appliances</span>
+            </div>
+            <span className={`text-[9px] px-1.5 py-0.5 rounded font-extrabold uppercase shrink-0 ${
+              activeTab === 'electronics-appliances' ? 'bg-slate-950 text-amber-400' : 'bg-amber-400/20 text-amber-300'
+            }`}>
+              Fridges & ACs
+            </span>
           </button>
 
         </div>
       </div>
 
-      {/* Main Split Grid: Booking Fields (7 cols) + Showcase Card (5 cols) */}
+      {/* Main Split Grid: Form (7 cols) + Showcase Card (5 cols) */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 divide-y lg:divide-y-0 lg:divide-x divide-slate-800">
         
         {/* Left Form Area */}
@@ -330,10 +264,10 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
 
               <div className="space-y-1">
                 <span className="text-[10px] sm:text-xs font-bold text-emerald-400 uppercase tracking-wider">
-                  Reservation Dispatched
+                  Request Dispatched
                 </span>
                 <h4 className="text-lg sm:text-xl font-bold text-white font-display">
-                  Philmen Received Your Booking
+                  Philmen Received Your Request
                 </h4>
                 <p className="text-xs text-slate-300 max-w-sm mx-auto">
                   Reference: <strong className="font-mono text-amber-400">{submittedInquiryCode}</strong>. Our team will reach you via {contactMethod} at <strong className="text-white">{customerPhone}</strong>.
@@ -341,7 +275,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
               </div>
 
               <div className="p-3 bg-slate-950/80 rounded-xl border border-slate-800 text-xs text-slate-300 max-w-sm mx-auto text-left space-y-1">
-                <div className="text-slate-400 font-medium">Selected Service:</div>
+                <div className="text-slate-400 font-medium">Selected Item / Service:</div>
                 <div className="font-bold text-white truncate">{submittedSummary}</div>
                 <div className="text-[11px] text-slate-400 pt-1">
                   Sent to: <span className="text-amber-300 font-mono break-all">{contactSettings.notificationEmail}</span>
@@ -351,7 +285,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
               <div className="flex flex-col sm:flex-row gap-2.5 justify-center pt-2 max-w-sm mx-auto">
                 <a
                   href={`https://wa.me/233${contactSettings.publicWhatsApp.replace(/^0/, '')}?text=${encodeURIComponent(
-                    `Hello Philmen, I just submitted booking ${submittedInquiryCode} for ${submittedSummary}. Please confirm.`
+                    `Hello Philmen, I just submitted request ${submittedInquiryCode} for ${submittedSummary}. Please confirm.`
                   )}`}
                   target="_blank"
                   rel="noreferrer"
@@ -374,30 +308,28 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
             <form onSubmit={handleBookingSubmit} className="space-y-4">
               
               {/* Dynamic Service Configuration Fields */}
-              {activeTab === 'car-rentals' && (
+              {activeTab === 'car-rental' && (
                 <div className="space-y-3 animate-in fade-in duration-200">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Select Vehicle Model
+                        Select Rental Vehicle
                       </label>
                       <select
                         value={carModel}
                         onChange={e => setCarModel(e.target.value)}
                         className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
                       >
-                        <option value="Toyota Land Cruiser Prado VXR">Toyota Land Cruiser Prado VXR (VIP 4x4)</option>
-                        <option value="Toyota Land Cruiser V8 300 Series">Toyota Land Cruiser V8 300 Series (Executive)</option>
+                        <option value="Toyota Land Cruiser Prado VXR">Toyota Land Cruiser Prado VXR (Executive 4x4)</option>
+                        <option value="Toyota Land Cruiser">Toyota Land Cruiser V8</option>
                         <option value="Toyota Camry Executive Sedan">Toyota Camry Executive Sedan</option>
-                        <option value="Mercedes-Benz E-Class VIP">Mercedes-Benz E-Class VIP</option>
-                        <option value="Toyota Hilux 4x4 Double Cabin">Toyota Hilux 4x4 Double Cabin (Project)</option>
-                        <option value="Toyota Coaster 30-Seater Bus">Toyota Coaster 30-Seater Executive Bus</option>
+                        <option value="Executive Airport VIP Van">Executive Airport VIP Van</option>
                       </select>
                     </div>
 
                     <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Chauffeur / Driver Preference
+                        Chauffeur Preference
                       </label>
                       <select
                         value={carRentalType}
@@ -405,9 +337,8 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                         className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
                       >
                         <option value="Chauffeur-Driven (Professional Driver)">Chauffeur-Driven (Professional Driver)</option>
-                        <option value="Self-Drive (Security Terms Apply)">Self-Drive (Verification Required)</option>
-                        <option value="Airport VIP Protocol Transfer">Airport VIP Pickup & Protocol</option>
-                        <option value="Corporate Monthly Lease">Corporate Long-Term Lease</option>
+                        <option value="Airport VIP Protocol Transfer">Airport VIP Protocol Transfer</option>
+                        <option value="Corporate Monthly Lease">Corporate Monthly Lease</option>
                       </select>
                     </div>
                   </div>
@@ -444,11 +375,11 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
 
                     <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Return Date / Duration
+                        Rental Duration
                       </label>
                       <input
                         type="text"
-                        placeholder="e.g. 3 Days"
+                        placeholder="e.g. 3 Days / 1 Week"
                         value={returnDate}
                         onChange={e => setReturnDate(e.target.value)}
                         className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
@@ -458,241 +389,101 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                 </div>
               )}
 
-              {activeTab === 'heavy-equipment' && (
+              {activeTab === 'car-sales' && (
                 <div className="space-y-3 animate-in fade-in duration-200">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Machinery Type
+                        Vehicle For Sale
                       </label>
                       <select
-                        value={equipmentType}
-                        onChange={e => setEquipmentType(e.target.value)}
+                        value={saleVehicleType}
+                        onChange={e => setSaleVehicleType(e.target.value)}
                         className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
                       >
-                        <option value="CAT 320D Hydraulic Excavator (20-Ton)">CAT 320D Hydraulic Excavator (20-Ton)</option>
-                        <option value="CAT 950H Heavy Wheel Loader">CAT 950H Heavy Wheel Loader</option>
-                        <option value="JCB 3CX Backhoe Loader">JCB 3CX Backhoe Loader</option>
-                        <option value="50-Ton Mobile All-Terrain Crane">50-Ton Mobile All-Terrain Crane</option>
-                        <option value="12-Ton Vibratory Soil Compactor">12-Ton Vibratory Soil Compactor</option>
+                        <option value="Toyota Corolla LE 2022 (Foreign Used)">Toyota Corolla LE 2022 (Foreign Used)</option>
+                        <option value="Toyota Land Cruiser Prado / SUVs">Toyota Land Cruiser / Luxury SUV</option>
+                        <option value="Custom Vehicle Request">Custom Model Sourcing / Inquiry</option>
                       </select>
                     </div>
 
                     <div className="min-w-0">
                       <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Site Location
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. Tema Industrial / Takoradi..."
-                        value={projectLocation}
-                        onChange={e => setProjectLocation(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Operator
+                        Inquiry Purpose
                       </label>
                       <select
-                        value={operatorRequired}
-                        onChange={e => setOperatorRequired(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-                      >
-                        <option value="Yes (Certified Operator Included)">Yes (Certified Operator Included)</option>
-                        <option value="Dry Lease (Client Supplies Operator)">Dry Lease (No Operator)</option>
-                      </select>
-                    </div>
-
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Project Start Date
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. Next Monday / Immediate"
-                        value={projectStartDate}
-                        onChange={e => setProjectStartDate(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'home-rentals' && (
-                <div className="space-y-3 animate-in fade-in duration-200">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Property Type
-                      </label>
-                      <select
-                        value={homeType}
-                        onChange={e => setHomeType(e.target.value)}
+                        value={purchasePreference}
+                        onChange={e => setPurchasePreference(e.target.value)}
                         className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
                       >
-                        <option value="Luxury 2-Bedroom Furnished Apartment (East Legon)">Luxury 2-Bedroom Furnished Apartment</option>
-                        <option value="3-Bedroom Gated Community Townhouse">3-Bedroom Gated Community Townhouse</option>
-                        <option value="Executive 1-Bedroom Serviced Short-let">Executive 1-Bedroom Serviced Short-let</option>
-                        <option value="4-Bedroom Standalone House with Pool">4-Bedroom Standalone House with Pool</option>
-                      </select>
-                    </div>
-
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Target Area
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. East Legon, Cantonments..."
-                        value={homeLocation}
-                        onChange={e => setHomeLocation(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Target Move-in Date
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. 1st of next month / Immediate"
-                        value={moveInDate}
-                        onChange={e => setMoveInDate(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      />
-                    </div>
-
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Lease Term
-                      </label>
-                      <select
-                        value={leaseDuration}
-                        onChange={e => setLeaseDuration(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-                      >
-                        <option value="Short-let (1–4 Weeks)">Short-let (1–4 Weeks)</option>
-                        <option value="Medium-term (3–6 Months)">Medium-term (3–6 Months)</option>
-                        <option value="1 Year Standard Lease">1 Year Standard Lease</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'towing' && (
-                <div className="space-y-3 animate-in fade-in duration-200">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Towing Service
-                      </label>
-                      <select
-                        value={towingService}
-                        onChange={e => setTowingService(e.target.value)}
-                        className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-                      >
-                        <option value="Emergency Hydraulic Flatbed Towing">Emergency Hydraulic Flatbed Towing</option>
-                        <option value="Heavy-Duty Commercial Truck Recovery">Heavy-Duty Commercial Truck Recovery</option>
-                        <option value="Intercity Vehicle Transport">Intercity Vehicle Transport</option>
-                      </select>
-                    </div>
-
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Vehicle Make & Model
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. Mercedes Benz C300"
-                        value={vehicleMakeModel}
-                        onChange={e => setVehicleMakeModel(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Breakdown Location <span className="text-amber-400">*</span>
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Tema Motorway / Spintex Rd"
-                        value={breakdownLocation}
-                        onChange={e => setBreakdownLocation(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      />
-                    </div>
-
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Destination Garage / Home
-                      </label>
-                      <input
-                        type="text"
-                        placeholder="e.g. Workshop in Kokomlemle"
-                        value={towingDestination}
-                        onChange={e => setTowingDestination(e.target.value)}
-                        className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
-                      />
-                    </div>
-                  </div>
-                </div>
-              )}
-
-              {activeTab === 'suits' && (
-                <div className="space-y-3 animate-in fade-in duration-200">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Suit Style
-                      </label>
-                      <select
-                        value={suitStyle}
-                        onChange={e => setSuitStyle(e.target.value)}
-                        className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-                      >
-                        <option value="Savile Row Italian Wool 3-Piece Bespoke Suit">Savile Row Italian Wool 3-Piece Bespoke</option>
-                        <option value="Executive Corporate 2-Piece Suit">Executive Corporate 2-Piece Suit</option>
-                        <option value="Luxury Black-Tie Wedding Tuxedo">Luxury Black-Tie Wedding Tuxedo</option>
-                      </select>
-                    </div>
-
-                    <div className="min-w-0">
-                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                        Fitting Location
-                      </label>
-                      <select
-                        value={fittingType}
-                        onChange={e => setFittingType(e.target.value)}
-                        className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
-                      >
-                        <option value="Executive Office / Home Measurement Visit">Executive Office / Home Measurement</option>
-                        <option value="Philmen Partner Tailoring Studio">Philmen Tailoring Studio</option>
+                        <option value="Physical Viewing & Test Drive">Physical Viewing & Test Drive</option>
+                        <option value="Price Negotiation & Outright Purchase">Price Negotiation & Outright Purchase</option>
+                        <option value="Documentation & Duty Verification">Documentation & Duty Verification</option>
                       </select>
                     </div>
                   </div>
 
                   <div>
                     <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
-                      Preferred Date & Time for Fitting
+                      Preferred Viewing Date & Location
                     </label>
                     <input
                       type="text"
-                      placeholder="e.g. This Friday afternoon at 3:00 PM"
-                      value={fittingDate}
-                      onChange={e => setFittingDate(e.target.value)}
+                      placeholder="e.g. Saturday afternoon at Achimota Mile 7"
+                      value={preferredInspectionDate}
+                      onChange={e => setPreferredInspectionDate(e.target.value)}
+                      className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
+                    />
+                  </div>
+                </div>
+              )}
+
+              {activeTab === 'electronics-appliances' && (
+                <div className="space-y-3 animate-in fade-in duration-200">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <div className="min-w-0">
+                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                        Product / Appliance
+                      </label>
+                      <select
+                        value={applianceItem}
+                        onChange={e => setApplianceItem(e.target.value)}
+                        className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
+                      >
+                        <option value="Samsung 535L Inverter Double Door Refrigerator">Samsung 535L Double Door Refrigerator</option>
+                        <option value="Gree 2.0 HP R32 Eco Inverter Split Air Conditioner">Gree 2.0 HP Split Air Conditioner</option>
+                        <option value="Certified 14.5kg Composite Safety Gas Cylinder">Certified 14.5kg Composite Gas Cylinder</option>
+                        <option value="24.5kg Anti-Explosion Translucent Composite Cylinder">24.5kg Translucent Composite Cylinder</option>
+                        <option value="50kg Heavy-Duty Industrial Steel LPG Gas Cylinder">50kg Industrial Steel Gas Cylinder</option>
+                        <option value="6kg Compact Domestic Steel Gas Cylinder with Burner">6kg Compact Steel Gas Cylinder</option>
+                      </select>
+                    </div>
+
+                    <div className="min-w-0">
+                      <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                        Quantity Required
+                      </label>
+                      <select
+                        value={orderQuantity}
+                        onChange={e => setOrderQuantity(e.target.value)}
+                        className="w-full px-3 py-2.5 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
+                      >
+                        <option value="1 Unit">1 Unit</option>
+                        <option value="2 - 5 Units">2 - 5 Units</option>
+                        <option value="Bulk Commercial Supply">Bulk Commercial Supply</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-[11px] font-semibold text-slate-300 uppercase tracking-wider mb-1">
+                      Delivery Address / Region in Ghana
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="e.g. Spintex / East Legon / Kumasi"
+                      value={deliveryArea}
+                      onChange={e => setDeliveryArea(e.target.value)}
                       className="w-full px-3 py-2 rounded-xl bg-slate-800/90 border border-slate-700 text-xs text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-500"
                     />
                   </div>
@@ -763,9 +554,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                   className="w-full sm:w-auto px-6 sm:px-7 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 rounded-xl text-xs font-extrabold tracking-wide uppercase shadow-lg shadow-amber-500/20 transition-all inline-flex items-center justify-center gap-2 cursor-pointer hover:scale-[1.02]"
                 >
                   <Send className="w-3.5 h-3.5" />
-                  <span>
-                    {activeTab === 'car-rentals' ? 'Reserve Car Rental' : 'Submit Reservation'}
-                  </span>
+                  <span>Submit Inquiry</span>
                 </button>
               </div>
 
@@ -773,7 +562,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
           )}
         </div>
 
-        {/* Right Showcase Card (Dynamic per Active Service Tab) */}
+        {/* Right Showcase Card */}
         <div className="lg:col-span-5 bg-slate-950/60 p-4 sm:p-6 flex flex-col justify-between space-y-4">
           
           <div className="space-y-3">
@@ -784,9 +573,6 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                 alt={currentPreview.title}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80';
-                }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/30 to-transparent" />
               
@@ -798,7 +584,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
 
               <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-end justify-between gap-2">
                 <div className="min-w-0">
-                  <div className="text-[10px] sm:text-[11px] text-slate-300 font-medium">Starting Rate:</div>
+                  <div className="text-[10px] sm:text-[11px] text-slate-300 font-medium">Rate / Price:</div>
                   <div className="text-sm sm:text-base font-extrabold text-white tabular-nums truncate">
                     {currentPreview.priceDisplay}
                   </div>
@@ -807,7 +593,7 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
                 <button
                   type="button"
                   onClick={() => onNavigate(`category:${currentPreview.categorySlug}`)}
-                  className="px-2.5 py-1 bg-white/90 hover:bg-white text-slate-950 text-[10px] sm:text-[11px] font-bold rounded-lg shadow-sm inline-flex items-center gap-1 transition-colors shrink-0"
+                  className="px-2.5 py-1 bg-white/90 hover:bg-white text-slate-950 text-[10px] sm:text-[11px] font-bold rounded-lg shadow-sm inline-flex items-center gap-1 transition-colors shrink-0 cursor-pointer"
                 >
                   <span>Explore</span>
                   <ArrowRight className="w-3 h-3" />
@@ -844,27 +630,24 @@ export const HeroBookingWidget: React.FC<Props> = ({ onNavigate, onOpenListing }
 
           {/* Quick Direct Desk Connect */}
           <div className="pt-3 border-t border-slate-800/80 flex flex-wrap items-center justify-between gap-2 text-xs">
-            <div className="text-slate-400 text-[11px]">
-              Need immediate assistance?
-            </div>
-            <div className="flex items-center gap-2">
+            <span className="text-slate-400 text-[11px]">Direct Desk:</span>
+            <div className="flex items-center gap-3">
               <a
                 href={`tel:${contactSettings.publicPhone}`}
-                className="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-white rounded-lg font-mono font-semibold text-[11px] inline-flex items-center gap-1"
-                title="Call Philmen"
+                className="font-bold text-white hover:text-amber-400 inline-flex items-center gap-1 font-mono text-[11px]"
               >
                 <Phone className="w-3 h-3 text-amber-400" />
                 <span>{contactSettings.publicPhone}</span>
               </a>
+              <span className="text-slate-600">·</span>
               <a
                 href={`https://wa.me/233${contactSettings.publicWhatsApp.replace(/^0/, '')}`}
                 target="_blank"
                 rel="noreferrer"
-                className="px-2.5 py-1.5 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg font-mono font-semibold text-[11px] inline-flex items-center gap-1"
-                title="WhatsApp Philmen"
+                className="font-bold text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1 font-mono text-[11px]"
               >
                 <MessageSquare className="w-3 h-3" />
-                <span>WhatsApp</span>
+                <span>{contactSettings.publicWhatsApp}</span>
               </a>
             </div>
           </div>

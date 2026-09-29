@@ -89,19 +89,19 @@ export const HomePage: React.FC<Props> = ({
 
               {/* Sub-headline */}
               <p className="text-xs sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-                Philmen is the official centralized platform for luxury car rentals, heavy equipment hire, home rentals, towing, and genuine retail products. All inquiries handled directly by Philmen management.
+                Philmen is the official centralized platform for car rentals, verified vehicle sales, and genuine electronics, electricals & home appliances across Ghana.
               </p>
 
               {/* Trust Micro-Badges */}
               <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-[11px] sm:text-xs text-slate-400 pt-1">
                 <div className="flex items-center gap-1.5">
                   <Zap className="w-3.5 h-3.5 text-amber-400 shrink-0" />
-                  <span className="text-slate-200 font-medium">Instant Booking Dispatch</span>
+                  <span className="text-slate-200 font-medium">Instant Inquiry Dispatch</span>
                 </div>
                 <span className="hidden min-[400px]:inline">·</span>
                 <div className="flex items-center gap-1.5">
                   <Shield className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
-                  <span className="text-slate-200 font-medium">100% Vetted Fleet & Machinery</span>
+                  <span className="text-slate-200 font-medium">100% Vetted Inventory</span>
                 </div>
                 <span className="hidden min-[400px]:inline">·</span>
                 <div className="flex items-center gap-1.5">
@@ -115,8 +115,8 @@ export const HomePage: React.FC<Props> = ({
             <div className="lg:col-span-5 space-y-2.5 sm:space-y-3">
               <div className="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-2.5 sm:p-3 shadow-lg space-y-2">
                 <div className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-slate-400 flex items-center justify-between px-1">
-                  <span>Product Search (Fridges, Laptops...)</span>
-                  <span className="text-amber-400 font-mono text-[10px]">13 Sectors</span>
+                  <span>Product & Service Search</span>
+                  <span className="text-amber-400 font-mono text-[10px]">3 Categories</span>
                 </div>
 
                 <form onSubmit={handleHeroSearch} className="flex gap-2">
@@ -175,7 +175,7 @@ export const HomePage: React.FC<Props> = ({
         </div>
       </section>
 
-      {/* 13 Official Categories Grid */}
+      {/* Official Categories Grid */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-6 sm:mb-8 gap-3 sm:gap-4">
           <div>
@@ -199,26 +199,26 @@ export const HomePage: React.FC<Props> = ({
           </button>
         </div>
 
-        <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 gap-3.5 sm:gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
           {CATEGORIES.map(cat => {
             const count = publishedListings.filter(l => l.category === cat.name).length;
             return (
               <div
                 key={cat.id}
                 onClick={() => onNavigate(`category:${cat.slug}`)}
-                className="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/90 hover:border-amber-400 hover:shadow-md transition-all group cursor-pointer flex flex-col justify-between"
+                className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200/90 hover:border-amber-400 hover:shadow-md transition-all group cursor-pointer flex flex-col justify-between"
               >
                 <div>
-                  <h3 className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-600 transition-colors leading-snug">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 group-hover:text-amber-600 transition-colors leading-snug">
                     {cat.name}
                   </h3>
 
-                  <p className="text-xs text-slate-500 mt-1.5 line-clamp-2 leading-relaxed">
+                  <p className="text-xs text-slate-500 mt-2 line-clamp-3 leading-relaxed">
                     {cat.description}
                   </p>
                 </div>
 
-                <div className="mt-3.5 pt-2.5 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
                   <span className="font-medium text-slate-600">{count} {count === 1 ? 'Listing' : 'Listings'}</span>
                   <span className="text-amber-600 font-semibold group-hover:translate-x-1 transition-transform inline-flex items-center">
                     Browse <ChevronRight className="w-3.5 h-3.5" />
@@ -294,7 +294,7 @@ export const HomePage: React.FC<Props> = ({
                 Browse & Select Listing
               </h3>
               <p className="text-xs text-slate-300 leading-relaxed">
-                Explore our catalog of vetted electronics, automotive sales, car & home rentals, heavy equipment, real estate, and materials.
+                Explore our catalog of vetted car rentals, verified car sales, and genuine electronics, electricals & home appliances.
               </p>
             </div>
 

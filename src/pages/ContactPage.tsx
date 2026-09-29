@@ -59,7 +59,7 @@ export const ContactPage: React.FC = () => {
           Contact Philmen
         </h1>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Connect directly with Philmen support for product inquiries, booking arrangements, heavy equipment deployment, and vehicle viewings.
+          Connect directly with Philmen support for product inquiries, car rental bookings, vehicle sales, and home appliance orders.
         </p>
       </div>
 

@@ -325,7 +325,7 @@ export const TechAdminDashboard: React.FC = () => {
             <div className="p-5 rounded-xl border border-rose-200 bg-rose-50/50 space-y-3">
               <div className="font-bold text-rose-900 text-sm">Reset to Initial Sample Data</div>
               <p className="text-xs text-rose-800/80">
-                Re-seeds the store with the default 13-category sample listings and clears local test changes.
+                Re-seeds the store with the default verified sample listings across the 3 official categories and clears local test changes.
               </p>
               <button
                 onClick={() => {

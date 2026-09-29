@@ -1,30 +1,19 @@
 import React from 'react';
 import {
   MapPin,
-  ExternalLink,
   ChevronRight,
   Layers,
-  HardHat,
-  Home,
-  Truck,
   Car,
+  Key,
+  Tv,
   Phone,
   MessageSquare,
-  Sparkles,
   Search,
   Star,
   HelpCircle,
   Info,
-  Headphones,
   CheckCircle2,
-  Package,
-  Tv,
-  Armchair,
-  Smartphone,
-  Laptop,
-  Building2,
-  Key,
-  Shirt
+  Clock
 } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { CATEGORIES } from '../data/categories';
@@ -55,12 +44,12 @@ export const SitemapPage: React.FC<Props> = ({ onNavigate, onSelectListing }) =>
               Website Sitemap
             </h1>
             <p className="text-xs sm:text-base text-slate-300 leading-relaxed">
-              Explore the structured index of all public pages, categories, and inventory listings available on the Philmen platform.
+              Explore the structured index of all public pages, official categories, and inventory listings available on the Philmen platform.
             </p>
           </div>
         </div>
 
-        {/* Sitemap Sections with Whole-Number Numbering */}
+        {/* Sitemap Sections */}
         <div className="space-y-6 sm:space-y-8">
           
           {/* SECTION 1: Core Website Pages */}
@@ -90,7 +79,7 @@ export const SitemapPage: React.FC<Props> = ({ onNavigate, onSelectListing }) =>
                     Home Page
                   </div>
                   <div className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
-                    Hero service booking & featured showcase
+                    Hero booking & featured showcase
                   </div>
                   <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
                     Route: /
@@ -109,7 +98,7 @@ export const SitemapPage: React.FC<Props> = ({ onNavigate, onSelectListing }) =>
                     All Categories Directory
                   </div>
                   <div className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
-                    Browse all 13 official sectors
+                    Browse all 3 official sectors
                   </div>
                   <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
                     Route: #categories
@@ -253,7 +242,7 @@ export const SitemapPage: React.FC<Props> = ({ onNavigate, onSelectListing }) =>
             </div>
           </section>
 
-          {/* SECTION 2: Building Materials & Construction */}
+          {/* SECTION 2: Official Categories Directory */}
           <section className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 sm:p-8 space-y-4 sm:space-y-5">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-3.5 sm:pb-4">
               <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs sm:text-sm font-display shrink-0">
@@ -261,309 +250,44 @@ export const SitemapPage: React.FC<Props> = ({ onNavigate, onSelectListing }) =>
               </span>
               <div>
                 <h2 className="text-base sm:text-xl font-bold text-slate-900 font-display">
-                  Building Materials & Construction
+                  Official Categories Directory
                 </h2>
                 <p className="text-[11px] sm:text-xs text-slate-500">
-                  Heavy site supplies, structural materials, and project plant machinery
+                  The 3 core sectors exclusively supported on the Philmen platform
                 </p>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 sm:gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('category:building-material-supply')}
-                className="p-4 sm:p-5 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
-              >
-                <div>
-                  <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-amber-700 bg-amber-100/70 px-2 py-0.5 rounded">
-                    Material Supply
-                  </span>
-                  <div className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-700 mt-2">
-                    Building Material Supply
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5 sm:gap-4">
+              {CATEGORIES.map(category => (
+                <button
+                  key={category.id}
+                  type="button"
+                  onClick={() => onNavigate(`category:${category.slug}`)}
+                  className="p-4 sm:p-5 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex flex-col justify-between cursor-pointer"
+                >
+                  <div>
+                    <div className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-700">
+                      {category.name}
+                    </div>
+                    <p className="text-xs text-slate-600 mt-1 line-clamp-3">
+                      {category.description}
+                    </p>
                   </div>
-                  <p className="text-xs text-slate-600 mt-1">
-                    Portland cement, reinforcement iron rods, quarry granite, sand, and roofing sheets.
-                  </p>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2.5">
-                    Route: #category/building-material-supply
+                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-3 pt-2 border-t border-slate-200/60 flex items-center justify-between">
+                    <span>Route: #category/{category.slug}</span>
+                    <ChevronRight className="w-3.5 h-3.5 text-slate-400 group-hover:text-amber-600 group-hover:translate-x-1 transition-transform" />
                   </div>
-                </div>
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:construction-and-heavy-equipment')}
-                className="p-4 sm:p-5 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
-              >
-                <div>
-                  <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-wider text-amber-700 bg-amber-100/70 px-2 py-0.5 rounded">
-                    Heavy Machinery
-                  </span>
-                  <div className="text-sm sm:text-base font-bold text-slate-900 group-hover:text-amber-700 mt-2">
-                    Construction & Heavy Equipment
-                  </div>
-                  <p className="text-xs text-slate-600 mt-1">
-                    Excavators, wheel loaders, backhoes, 50-ton cranes, and soil compactors.
-                  </p>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2.5">
-                    Route: #category/construction-and-heavy-equipment
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
-              </button>
+                </button>
+              ))}
             </div>
           </section>
 
-          {/* SECTION 3: Services & Specialized Rentals */}
+          {/* SECTION 3: Published Inventory & Catalog Items */}
           <section className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 sm:p-8 space-y-4 sm:space-y-5">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-3.5 sm:pb-4">
               <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs sm:text-sm font-display shrink-0">
                 3
-              </span>
-              <div>
-                <h2 className="text-base sm:text-xl font-bold text-slate-900 font-display">
-                  Services & Specialized Rentals
-                </h2>
-                <p className="text-[11px] sm:text-xs text-slate-500">
-                  Direct bookable services facilitated through Philmen management
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
-              <button
-                type="button"
-                onClick={() => onNavigate('category:car-rentals')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex flex-col justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Car Rentals
-                  </div>
-                  <p className="text-xs text-slate-500 mt-1">
-                    Chauffeur executive sedans, 4x4 SUVs, VIP protocol & long-term leases
-                  </p>
-                </div>
-                <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-3 pt-2 border-t border-slate-200/60">
-                  #category/car-rentals
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:home-rentals')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex flex-col justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Home Rentals
-                  </div>
-                  <p className="text-xs text-slate-500 mt-1">
-                    Furnished executive apartments, gated townhouses & short-let stays
-                  </p>
-                </div>
-                <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-3 pt-2 border-t border-slate-200/60">
-                  #category/home-rentals
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:towing')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex flex-col justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    24/7 Towing
-                  </div>
-                  <p className="text-xs text-slate-500 mt-1">
-                    Zero-damage hydraulic flatbed recovery across Accra & highways
-                  </p>
-                </div>
-                <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-3 pt-2 border-t border-slate-200/60">
-                  #category/towing
-                </div>
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:suits')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex flex-col justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Bespoke Suits
-                  </div>
-                  <p className="text-xs text-slate-500 mt-1">
-                    Italian wool tailored suits, tuxedos, and office/home fitting visits
-                  </p>
-                </div>
-                <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-3 pt-2 border-t border-slate-200/60">
-                  #category/suits
-                </div>
-              </button>
-            </div>
-          </section>
-
-          {/* SECTION 4: Product & Retail Categories */}
-          <section className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 sm:p-8 space-y-4 sm:space-y-5">
-            <div className="flex items-center gap-3 border-b border-slate-100 pb-3.5 sm:pb-4">
-              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs sm:text-sm font-display shrink-0">
-                4
-              </span>
-              <div>
-                <h2 className="text-base sm:text-xl font-bold text-slate-900 font-display">
-                  Product & Retail Categories
-                </h2>
-                <p className="text-[11px] sm:text-xs text-slate-500">
-                  Certified electronics, automotive sales, real estate, and consumer goods
-                </p>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-3.5">
-              <button
-                type="button"
-                onClick={() => onNavigate('category:electronic-and-electricals')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Electronic & Electricals
-                  </div>
-                  <div className="text-xs text-slate-500 mt-0.5">
-                    Air conditioners, gas cylinders, fridges
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
-                    #category/electronic-and-electricals
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:furniture')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Furniture
-                  </div>
-                  <div className="text-xs text-slate-500 mt-0.5">
-                    Living room, executive office, bedroom sets
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
-                    #category/furniture
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:phones')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Phones
-                  </div>
-                  <div className="text-xs text-slate-500 mt-0.5">
-                    iOS & Android smartphones, business handsets
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
-                    #category/phones
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:laptops')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Laptops
-                  </div>
-                  <div className="text-xs text-slate-500 mt-0.5">
-                    Executive ultrabooks, developer workstations
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
-                    #category/laptops
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:real-estate')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Real Estate
-                  </div>
-                  <div className="text-xs text-slate-500 mt-0.5">
-                    Commercial spaces, titled residential plots
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
-                    #category/real-estate
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:car-sales')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Car Sales
-                  </div>
-                  <div className="text-xs text-slate-500 mt-0.5">
-                    Registered & duty-paid sedans, SUVs, pickups
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
-                    #category/car-sales
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => onNavigate('category:perfume')}
-                className="p-3.5 sm:p-4 rounded-xl bg-slate-50 hover:bg-amber-50/70 border border-slate-200/80 hover:border-amber-300 text-left transition-all group flex items-start justify-between cursor-pointer"
-              >
-                <div>
-                  <div className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-amber-700">
-                    Perfume
-                  </div>
-                  <div className="text-xs text-slate-500 mt-0.5">
-                    Designer fragrances, luxury Arabian ouds
-                  </div>
-                  <div className="text-[10px] sm:text-[11px] font-mono text-slate-400 mt-2">
-                    #category/perfume
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-400 group-hover:text-amber-600 transition-transform group-hover:translate-x-1 shrink-0 ml-2" />
-              </button>
-            </div>
-          </section>
-
-          {/* SECTION 5: Published Inventory & Catalog Items */}
-          <section className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 sm:p-8 space-y-4 sm:space-y-5">
-            <div className="flex items-center gap-3 border-b border-slate-100 pb-3.5 sm:pb-4">
-              <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs sm:text-sm font-display shrink-0">
-                5
               </span>
               <div>
                 <h2 className="text-base sm:text-xl font-bold text-slate-900 font-display">
@@ -599,11 +323,11 @@ export const SitemapPage: React.FC<Props> = ({ onNavigate, onSelectListing }) =>
             </div>
           </section>
 
-          {/* SECTION 6: Customer Inquiries & Contact Channels */}
+          {/* SECTION 4: Customer Inquiries & Contact Channels */}
           <section className="bg-white rounded-2xl border border-slate-200/90 shadow-xs p-4 sm:p-8 space-y-4 sm:space-y-5">
             <div className="flex items-center gap-3 border-b border-slate-100 pb-3.5 sm:pb-4">
               <span className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-amber-500 text-slate-950 font-bold flex items-center justify-center text-xs sm:text-sm font-display shrink-0">
-                6
+                4
               </span>
               <div>
                 <h2 className="text-base sm:text-xl font-bold text-slate-900 font-display">

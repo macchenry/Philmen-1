@@ -103,12 +103,12 @@ const INITIAL_INQUIRIES: Inquiry[] = [
     customerEmail: 'kofi.annan@example.com',
     contactMethod: 'Phone',
     preferredDateTime: 'Morning (9:00 AM - 12:00 PM)',
-    message: 'Hello Philmen, I would like to schedule an inspection for this property in East Legon this weekend. Please confirm availability.',
-    listingId: 'HM-0001',
-    listingName: 'Luxury 2-Bedroom Furnished Apartment with Pool & 24/7 Security',
-    listingUrl: 'https://www.philmen.shop/listing/luxury-2-bedroom-furnished-apartment-east-legon',
-    listingType: 'Product',
-    category: 'Home Rentals',
+    message: 'Hello Philmen, I would like to reserve the Toyota Land Cruiser Prado for an executive airport pickup this weekend. Please confirm availability.',
+    listingId: 'PH-CR-001',
+    listingName: 'Toyota Land Cruiser Prado VXR (Chauffeur-Driven Executive Rental)',
+    listingUrl: 'https://www.philmen.shop/listing/toyota-land-cruiser-prado-executive-rental',
+    listingType: 'Service',
+    category: 'Car Rental',
     date: '2026-03-26',
     time: '14:25',
     status: 'New',
@@ -137,6 +137,20 @@ const INITIAL_INQUIRIES: Inquiry[] = [
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
+const CANONICAL_CATEGORIES = new Set([
+  'Car Rental',
+  'Car Sales',
+  'Electronics, Electricals & Home Appliances'
+]);
+
+const normalizeCategory = (cat: string): string => {
+  if (cat === 'Car Rentals') return 'Car Rental';
+  if (cat === 'Electronic & Electricals' || cat === 'Electronics & Electricals' || cat === 'Electronics') {
+    return 'Electronics, Electricals & Home Appliances';
+  }
+  return cat;
+};
+
 export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [listings, setListings] = useState<Listing[]>(() => {
     try {
@@ -144,24 +158,31 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       if (saved) {
         const parsed: Listing[] = JSON.parse(saved);
         const initialMap = new Map(INITIAL_LISTINGS.map(item => [item.id, item]));
-        // Sync official listings with the new image mappings
-        const updatedParsed = parsed.map(item => {
-          const initialMatch = initialMap.get(item.id);
-          if (initialMatch) {
+        
+        // Filter out any listings from removed categories, normalize names and sync official listings
+        const updatedParsed = parsed
+          .map(item => {
+            const initialMatch = initialMap.get(item.id);
+            if (initialMatch) {
+              return {
+                ...item,
+                category: initialMatch.category,
+                images: initialMatch.images
+              };
+            }
             return {
               ...item,
-              images: initialMatch.images
+              category: normalizeCategory(item.category)
             };
-          }
-          return item;
-        });
+          })
+          .filter(item => CANONICAL_CATEGORIES.has(item.category));
 
         const existingIds = new Set(updatedParsed.map(item => item.id));
         const missingInitial = INITIAL_LISTINGS.filter(item => !existingIds.has(item.id));
         if (missingInitial.length > 0) {
           return [...updatedParsed, ...missingInitial];
         }
-        return updatedParsed;
+        return updatedParsed.length > 0 ? updatedParsed : INITIAL_LISTINGS;
       }
       return INITIAL_LISTINGS;
     } catch {

@@ -81,7 +81,7 @@ export const EditorDashboard: React.FC<Props> = ({ onViewPublicListing }) => {
       <div className="p-4 bg-amber-50 border border-amber-200/80 rounded-2xl flex items-start gap-3 text-xs text-amber-900">
         <ShieldAlert className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
         <div className="leading-relaxed">
-          <strong>Editor Permission Scope:</strong> You have authorization to manage listing content, pricing, specifications, and availability across all 13 categories. Security settings, private management phone lines, user roles, and system configurations are restricted to Manager/Owner and Technical Admin roles.
+          <strong>Editor Permission Scope:</strong> You have authorization to manage listing content, pricing, specifications, and availability across all 3 official categories. Security settings, private management phone lines, user roles, and system configurations are restricted to Manager/Owner and Technical Admin roles.
         </div>
       </div>
 

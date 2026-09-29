@@ -3,7 +3,10 @@ import { AppProvider, useApp } from './context/AppContext';
 import { Header } from './components/common/Header';
 import { Footer } from './components/common/Footer';
 import { ListingCard } from './components/common/ListingCard';
-import { HomePage } from './pages/HomePage';
+import { PreHomePage } from './pages/PreHomePage';
+import { CarRentalHomePage } from './pages/service-homes/CarRentalHomePage';
+import { CarSalesHomePage } from './pages/service-homes/CarSalesHomePage';
+import { ElectronicsHomePage } from './pages/service-homes/ElectronicsHomePage';
 import { CategoryListPage } from './pages/CategoryListPage';
 import { CategoryDetailPage } from './pages/CategoryDetailPage';
 import { ListingDetailPage } from './pages/ListingDetailPage';
@@ -53,7 +56,7 @@ function MainApp() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace(/^#\/?/, '');
-      if (!hash || hash === '') {
+      if (!hash || hash === '' || hash === 'home') {
         setCurrentRoute('home');
       } else if (hash.startsWith('listing/')) {
         const slug = hash.replace('listing/', '');
@@ -67,6 +70,12 @@ function MainApp() {
       } else if (hash.startsWith('category/')) {
         const catSlug = hash.replace('category/', '');
         setCurrentRoute(`category:${catSlug}`);
+      } else if (hash === 'car-rental') {
+        setCurrentRoute('category:car-rental');
+      } else if (hash === 'car-sales') {
+        setCurrentRoute('category:car-sales');
+      } else if (hash === 'electronics-appliances' || hash === 'electronics-electricals-and-home-appliances') {
+        setCurrentRoute('category:electronics-electricals-and-home-appliances');
       } else if (hash.startsWith('search')) {
         const queryParams = new URLSearchParams(hash.split('?')[1] || '');
         setSearchParams({
@@ -86,13 +95,16 @@ function MainApp() {
 
   const navigateTo = (route: string) => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-    if (route === 'home') {
+    if (route === 'home' || route === 'pre-home') {
       window.location.hash = '';
       setCurrentRoute('home');
     } else if (route.startsWith('category:')) {
       const slug = route.replace('category:', '');
       window.location.hash = `category/${slug}`;
       setCurrentRoute(route);
+    } else if (route === 'car-rental' || route === 'car-sales' || route === 'electronics-electricals-and-home-appliances') {
+      window.location.hash = `category/${route}`;
+      setCurrentRoute(`category:${route}`);
     } else if (route.startsWith('listing:')) {
       const slug = route.replace('listing:', '');
       window.location.hash = `listing/${slug}`;
@@ -163,6 +175,11 @@ function MainApp() {
     );
   }
 
+  // Determine which Category / Service is selected
+  const categorySlug = currentRoute.startsWith('category:')
+    ? currentRoute.replace('category:', '')
+    : null;
+
   return (
     <div className="min-h-screen flex flex-col bg-slate-50 text-slate-900">
       
@@ -177,14 +194,66 @@ function MainApp() {
 
       {/* Main Public Content */}
       <main className="flex-1">
+        {/* 1. Pre-Homepage (Entry Level) */}
         {currentRoute === 'home' && (
-          <HomePage
+          <PreHomePage
+            onSelectService={(serviceSlug) => navigateTo(`category:${serviceSlug}`)}
             onNavigate={navigateTo}
+          />
+        )}
+
+        {/* 2. Dedicated Car Rental Home Page */}
+        {categorySlug === 'car-rental' && (
+          <CarRentalHomePage
+            onReturnToPreHome={() => navigateTo('home')}
             onSelectListing={handleSelectListing}
             onCall={handleOpenCallModal}
             onWhatsApp={handleOpenWhatsAppModal}
             onBook={handleOpenBookModal}
+            onNavigate={navigateTo}
           />
+        )}
+
+        {/* 3. Dedicated Car Sales Home Page */}
+        {categorySlug === 'car-sales' && (
+          <CarSalesHomePage
+            onReturnToPreHome={() => navigateTo('home')}
+            onSelectListing={handleSelectListing}
+            onCall={handleOpenCallModal}
+            onWhatsApp={handleOpenWhatsAppModal}
+            onBook={handleOpenBookModal}
+            onNavigate={navigateTo}
+          />
+        )}
+
+        {/* 4. Dedicated Electronics, Electricals & Home Appliances Home Page */}
+        {(categorySlug === 'electronics-electricals-and-home-appliances' ||
+          categorySlug === 'electronics-appliances') && (
+          <ElectronicsHomePage
+            onReturnToPreHome={() => navigateTo('home')}
+            onSelectListing={handleSelectListing}
+            onCall={handleOpenCallModal}
+            onWhatsApp={handleOpenWhatsAppModal}
+            onBook={handleOpenBookModal}
+            onNavigate={navigateTo}
+          />
+        )}
+
+        {/* Fallback for other category slugs if any */}
+        {categorySlug &&
+          categorySlug !== 'car-rental' &&
+          categorySlug !== 'car-sales' &&
+          categorySlug !== 'electronics-electricals-and-home-appliances' &&
+          categorySlug !== 'electronics-appliances' && (
+            <CategoryDetailPage
+              categorySlug={categorySlug}
+              onBack={() => navigateTo('categories')}
+              onSelectListing={handleSelectListing}
+              onCall={handleOpenCallModal}
+              onWhatsApp={handleOpenWhatsAppModal}
+              onBook={handleOpenBookModal}
+              onSelectCategory={slug => navigateTo(`category:${slug}`)}
+            />
         )}
 
         {currentRoute === 'categories' && (
@@ -193,24 +262,21 @@ function MainApp() {
           />
         )}
 
-        {currentRoute.startsWith('category:') && (
-          <CategoryDetailPage
-            categorySlug={currentRoute.replace('category:', '')}
-            onBack={() => navigateTo('categories')}
-            onSelectListing={handleSelectListing}
-            onCall={handleOpenCallModal}
-            onWhatsApp={handleOpenWhatsAppModal}
-            onBook={handleOpenBookModal}
-            onSelectCategory={slug => navigateTo(`category:${slug}`)}
-          />
-        )}
-
         {currentRoute.startsWith('listing:') && activeListing && (
           <ListingDetailPage
             listing={activeListing}
-            onBack={() => navigateTo('home')}
+            onBack={() => {
+              if (activeListing.category === 'Car Rental') {
+                navigateTo('category:car-rental');
+              } else if (activeListing.category === 'Car Sales') {
+                navigateTo('category:car-sales');
+              } else if (activeListing.category === 'Electronics, Electricals & Home Appliances') {
+                navigateTo('category:electronics-electricals-and-home-appliances');
+              } else {
+                navigateTo('home');
+              }
+            }}
             onNavigateCategory={catName => {
-              const catObj = listings.find(l => l.category === catName);
               const found = getCategoryBySlug(catName.toLowerCase().replace(/[^a-z0-9]+/g, '-'));
               if (found) {
                 navigateTo(`category:${found.slug}`);
@@ -235,7 +301,7 @@ function MainApp() {
                 Featured Products & Services
               </h1>
               <p className="text-xs sm:text-sm text-slate-600 mt-1">
-                Explore handpicked offerings currently highlighted by Philmen management.
+                Explore handpicked offerings across our 3 official categories.
               </p>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

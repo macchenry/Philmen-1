@@ -59,7 +59,7 @@ export const HowItWorksPage: React.FC<Props> = ({ onNavigate }) => {
             </div>
             <h3 className="text-base font-bold text-white">3. Safe Fulfillment</h3>
             <p className="text-xs text-slate-300 leading-relaxed">
-              You receive genuine products, verified rental vehicles, heavy machinery deployment, or professional services with Philmen accountability.
+              You receive genuine appliances, certified vehicle purchases, and verified rental cars with Philmen accountability.
             </p>
           </div>
         </div>
@@ -118,7 +118,7 @@ export const HowItWorksPage: React.FC<Props> = ({ onNavigate }) => {
       <div className="p-8 bg-amber-50 border border-amber-200/80 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-6">
         <div className="space-y-1 text-center sm:text-left">
           <h3 className="text-lg font-bold text-amber-950 font-display">Ready to find your product or service?</h3>
-          <p className="text-xs text-amber-900/80">Explore our catalog across 13 diverse categories today.</p>
+          <p className="text-xs text-amber-900/80">Explore our catalog across our 3 official categories today.</p>
         </div>
         <button
           onClick={() => onNavigate('categories')}

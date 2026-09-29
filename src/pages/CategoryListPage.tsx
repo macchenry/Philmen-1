@@ -23,7 +23,7 @@ export const CategoryListPage: React.FC<Props> = ({ onSelectCategory }) => {
           All Philmen Categories
         </h1>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Browse our 13 official product and service sectors. All inventory and service requests are centrally coordinated and verified by Philmen.
+          Browse our 3 official product and service sectors. All inventory and service requests are centrally coordinated and verified by Philmen.
         </p>
       </div>
 

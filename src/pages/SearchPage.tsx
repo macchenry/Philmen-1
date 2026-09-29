@@ -98,7 +98,7 @@ export const SearchPage: React.FC<Props> = ({
           Find Products & Services
         </h1>
         <p className="text-xs sm:text-sm text-slate-600">
-          Search across all 13 official Philmen categories, locations, and inventory.
+          Search across all 3 official Philmen categories, locations, and inventory.
         </p>
       </div>
 
@@ -111,7 +111,7 @@ export const SearchPage: React.FC<Props> = ({
             <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
             <input
               type="text"
-              placeholder="Search keyword (e.g. Fridge, Corolla, Towing, Apartment, Suit)..."
+              placeholder="Search keyword (e.g. Fridge, Corolla, Prado, AC, Gas Cylinder)..."
               value={query}
               onChange={e => setQuery(e.target.value)}
               className="w-full pl-10 pr-4 py-2.5 bg-slate-50 rounded-xl border border-slate-200 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-amber-500"
@@ -133,7 +133,7 @@ export const SearchPage: React.FC<Props> = ({
               onChange={e => setCategory(e.target.value)}
               className="w-full py-2.5 px-3 bg-slate-50 rounded-xl border border-slate-200 text-xs sm:text-sm font-medium text-slate-800 focus:outline-none focus:ring-2 focus:ring-amber-500 cursor-pointer"
             >
-              <option value="all">All 13 Categories</option>
+              <option value="all">All 3 Categories</option>
               {CATEGORIES.map(c => (
                 <option key={c.id} value={c.name}>
                   {c.name}

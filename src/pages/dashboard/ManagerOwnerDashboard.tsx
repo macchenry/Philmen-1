@@ -801,7 +801,7 @@ export const ManagerOwnerDashboard: React.FC<Props> = ({ onViewPublicListing }) 
       {activeTab === 'categories' && (
         <div className="bg-white rounded-2xl border border-slate-200 shadow-xs p-6 space-y-6">
           <div className="pb-4 border-b border-slate-100">
-            <h2 className="text-lg font-bold text-slate-900 font-display">13 Official Categories & Inventory Count</h2>
+            <h2 className="text-lg font-bold text-slate-900 font-display">3 Official Categories & Inventory Count</h2>
             <p className="text-xs text-slate-500">
               Overview of listing distribution across the Philmen directory structure.
             </p>

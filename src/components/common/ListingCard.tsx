@@ -31,8 +31,8 @@ export const ListingCard: React.FC<Props> = ({
           referrerPolicy="no-referrer"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           onError={(e) => {
-            // Graceful fallback container using approved image
-            (e.target as HTMLImageElement).src = 'https://i.ibb.co/6cXmtvS1/008-2-Bedroom-Luxury-Apartment.jpg';
+            // Graceful fallback container using approved category image
+            (e.target as HTMLImageElement).src = 'https://i.ibb.co/fzY197WN/006-Toyota-Corolla-LE-2022.jpg';
           }}
         />
 

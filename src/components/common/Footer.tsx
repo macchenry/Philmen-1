@@ -29,32 +29,6 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
 
   return (
     <footer className="bg-slate-950 text-slate-300 border-t border-slate-800 overflow-x-hidden">
-      
-      {/* Top Banner / Trust Bar */}
-      <div className="border-b border-slate-900 bg-slate-900/60 py-4 sm:py-6">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-3 sm:gap-4 text-xs">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-amber-500/10 text-amber-400 flex items-center justify-center shrink-0">
-              <ShieldCheck className="w-4 h-4" />
-            </div>
-            <span className="leading-snug">
-              <strong className="text-white">Centralized Platform:</strong> All product and service inquiries are managed directly by Philmen management.
-            </span>
-          </div>
-
-          <div className="flex flex-wrap items-center gap-4 sm:gap-6 text-slate-400 text-[11px] sm:text-xs">
-            <div className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <span>Hours: <strong className="text-slate-200">{contactSettings.businessHours}</strong></span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Globe className="w-3.5 h-3.5 text-amber-500 shrink-0" />
-              <span className="truncate">{contactSettings.website}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
       {/* Main Footer Directory */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-10 sm:space-y-12">
         
@@ -78,7 +52,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
                 Categories
               </div>
               <div className="text-[11px] text-slate-400 mt-0.5">
-                All 13 official sectors
+                3 Official Sectors
               </div>
             </button>
 
@@ -150,7 +124,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
         </div>
 
         {/* Detailed Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-10">
           
           {/* Col 1: Brand & Philosophy */}
           <div className="lg:col-span-2 space-y-4">
@@ -163,7 +137,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
               />
             </div>
             <p className="text-xs text-slate-400 leading-relaxed max-w-sm">
-              Philmen is a centralized platform for displaying and promoting vetted products and services across Ghana. We connect prospective customers directly to verified high-value products, equipment, automotive solutions, real estate, and professional services.
+              Philmen is a centralized platform for displaying and promoting vetted products and services across Ghana. We connect prospective customers directly to verified car rentals, certified vehicle sales, and genuine electronics, electricals & home appliances.
             </p>
             <div className="pt-2">
               <div className="text-[11px] uppercase tracking-wider font-semibold text-amber-500 mb-1.5">
@@ -175,13 +149,13 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
             </div>
           </div>
 
-          {/* Col 2: Categories (Part 1) */}
+          {/* Col 2: Categories Directory */}
           <div>
             <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3.5 font-display">
               Categories Directory
             </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
-              {CATEGORIES.slice(0, 7).map(cat => (
+            <ul className="space-y-2.5 text-xs text-slate-400">
+              {CATEGORIES.map(cat => (
                 <li key={cat.id}>
                   <button
                     onClick={() => onNavigate(`category:${cat.slug}`)}
@@ -194,26 +168,7 @@ export const Footer: React.FC<Props> = ({ onNavigate, onOpenAdminAuth }) => {
             </ul>
           </div>
 
-          {/* Col 3: Categories (Part 2) */}
-          <div>
-            <h4 className="text-xs font-bold text-white uppercase tracking-wider mb-3.5 font-display">
-              More Offerings
-            </h4>
-            <ul className="space-y-2 text-xs text-slate-400">
-              {CATEGORIES.slice(7).map(cat => (
-                <li key={cat.id}>
-                  <button
-                    onClick={() => onNavigate(`category:${cat.slug}`)}
-                    className="hover:text-amber-400 transition-colors text-left"
-                  >
-                    {cat.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Col 4: Official Public Contacts */}
+          {/* Col 3: Official Public Contacts */}
           <div className="space-y-4">
             <h4 className="text-xs font-bold text-white uppercase tracking-wider font-display">
               Public Contact

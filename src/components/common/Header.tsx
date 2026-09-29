@@ -6,12 +6,8 @@ import {
   Lock,
   ChevronDown,
   Car,
-  HardHat,
-  Home,
-  Truck,
-  Shirt,
-  Building,
-  Package,
+  Key,
+  Tv,
   CalendarCheck,
   ArrowRight,
   Sparkles
@@ -29,55 +25,28 @@ interface ServiceItem {
 
 const BOOKABLE_SERVICES: ServiceItem[] = [
   {
-    id: 'car-rentals',
-    name: 'Executive Car Rentals',
-    categorySlug: 'car-rentals',
-    description: 'Chauffeur Prado VXR, V8 300, Camry & VIP airport transfers',
+    id: 'car-rental',
+    name: 'Car Rental',
+    categorySlug: 'car-rental',
+    description: 'Chauffeur Prado VXR, VIP sedans, airport transfers & corporate leases',
+    icon: Key,
+    tag: 'Chauffeur'
+  },
+  {
+    id: 'car-sales',
+    name: 'Car Sales',
+    categorySlug: 'car-sales',
+    description: 'Vetted foreign-used sedans, SUVs, pickups & physical inspections',
     icon: Car,
-    tag: 'Popular'
+    tag: 'Verified'
   },
   {
-    id: 'heavy-equipment',
-    name: 'Construction & Heavy Equipment',
-    categorySlug: 'construction-and-heavy-equipment',
-    description: 'CAT excavators, wheel loaders, 50-ton cranes & compactors',
-    icon: HardHat
-  },
-  {
-    id: 'home-rentals',
-    name: 'Home & Apartment Rentals',
-    categorySlug: 'home-rentals',
-    description: 'Furnished apartments in East Legon, townhouses & short-lets',
-    icon: Home
-  },
-  {
-    id: 'towing',
-    name: '24/7 Emergency Towing',
-    categorySlug: 'towing',
-    description: 'Zero-damage hydraulic flatbed recovery across Accra & highways',
-    icon: Truck,
-    tag: '24/7 Rapid'
-  },
-  {
-    id: 'suits',
-    name: 'Bespoke Suit Tailoring',
-    categorySlug: 'suits',
-    description: 'Italian wool 3-piece custom fitting & measurement visits',
-    icon: Shirt
-  },
-  {
-    id: 'real-estate',
-    name: 'Real Estate & Land Inspection',
-    categorySlug: 'real-estate',
-    description: 'Verified residential plots, commercial properties & developments',
-    icon: Building
-  },
-  {
-    id: 'building-materials',
-    name: 'Building Material Bulk Supply',
-    categorySlug: 'building-material-supply',
-    description: 'Direct quarry granite, high-grade sand & structural cement',
-    icon: Package
+    id: 'electronics-appliances',
+    name: 'Electronics & Appliances',
+    categorySlug: 'electronics-electricals-and-home-appliances',
+    description: 'Inverter ACs, safety gas cylinders, double door fridges & appliances',
+    icon: Tv,
+    tag: 'Genuine'
   }
 ];
 

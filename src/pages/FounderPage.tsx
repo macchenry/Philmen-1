@@ -130,7 +130,7 @@ export const FounderPage: React.FC<Props> = ({ onNavigate }) => {
                   </h3>
                 </div>
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  Philmen was established to make it easier for customers to discover different products and services through one convenient platform. The platform brings together categories ranging from electronics and furniture to construction equipment, real estate, vehicles, towing, building materials, perfumes and suits.
+                  Philmen was established to make it easier for customers to discover different products and services through one convenient platform. The platform brings together categories including Car Rental, Car Sales, and Electronics, Electricals & Home Appliances.
                 </p>
               </div>
 
@@ -179,7 +179,7 @@ export const FounderPage: React.FC<Props> = ({ onNavigate }) => {
             </button>
           </div>
 
-          <div className="grid grid-cols-1 min-[420px]:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3.5 sm:gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {CATEGORIES.map(category => (
               <button
                 key={category.id}
